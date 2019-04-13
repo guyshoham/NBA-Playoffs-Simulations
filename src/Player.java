@@ -1,4 +1,4 @@
-public class Player {
+public class Player implements Comparable<Player> {
     private String name;
     private PlayoffPicture bet;
     private int wins, score;
@@ -80,12 +80,12 @@ public class Player {
         orenBet.getRound1()[4].setSeries(4, 1);
         orenBet.getRound1()[5].setSeries(4, 2);
         orenBet.getRound1()[6].setSeries(1, 4);
-        orenBet.getRound1()[7].setSeries(4, 3);
+        orenBet.getRound1()[7].setSeries(3, 4);
         orenBet.qualifyTeams();
         orenBet.getRound2()[0].setSeries(4, 2);
         orenBet.getRound2()[1].setSeries(2, 4);
         orenBet.getRound2()[2].setSeries(4, 2);
-        orenBet.getRound2()[3].setSeries(4, 3);
+        orenBet.getRound2()[3].setSeries(4, 2);
         orenBet.qualifyTeams();
         orenBet.getConfFinals()[0].setSeries(3, 4);
         orenBet.getConfFinals()[1].setSeries(4, 1);
@@ -102,7 +102,7 @@ public class Player {
         mamanBet.getRound1()[1].setSeries(4, 2);
         mamanBet.getRound1()[2].setSeries(4, 0);
         mamanBet.getRound1()[3].setSeries(4, 0);
-        mamanBet.getRound1()[4].setSeries(4, 1);
+        mamanBet.getRound1()[4].setSeries(4, 0);
         mamanBet.getRound1()[5].setSeries(4, 1);
         mamanBet.getRound1()[6].setSeries(4, 3);
         mamanBet.getRound1()[7].setSeries(2, 4);
@@ -223,5 +223,10 @@ public class Player {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Player other) {
+        return other.getWins() - this.wins;
     }
 }

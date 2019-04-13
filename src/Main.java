@@ -1,10 +1,10 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
-
     public static final double OPTIONS = Math.pow(8, 8);
-
 
     public static void main(String[] args) {
         Player[] players = initPlayers();
@@ -21,7 +21,7 @@ public class Main {
 
         printResult(players);
         System.out.println("\nsimulation time: " + simulationTotal / 1000 + "s");
-        System.out.println("calculateScore time: " + calculationTotal / 1000 + "s");
+        System.out.println("score calculate time: " + calculationTotal / 1000 + "s");
     }
 
     private static ArrayList<PlayoffPicture> startSimulation() {
@@ -85,11 +85,16 @@ public class Main {
 
     private static void printResult(Player[] players) {
         int numOfWins = 0;
+        List<Player> sortedPlayers = new ArrayList<>();
         for (Player player : players) {
             numOfWins += player.getWins();
+            sortedPlayers.add(player);
         }
+
+        Collections.sort(sortedPlayers);
+
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        for (Player player : players) {
+        for (Player player : sortedPlayers) {
             System.out.printf("%-15s%s%-8s%s%.2f%s\n", player, " wins = ", formatter.format(player.getWins()),
                     " - ", player.getWins() / (double) numOfWins * 100, "%");
         }
