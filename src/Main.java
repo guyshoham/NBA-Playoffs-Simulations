@@ -85,9 +85,9 @@ public class Main {
 
     private static void printResult(Player[] players, int optionsSize) {
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-
-        for (int i = 0; i < 5; i++) {
-            System.out.printf("%-15s%s%-8s%s%.2f%s\n", players[i], " wins = ", formatter.format(players[i].getWins()), " - ", players[i].getWins() / (double) optionsSize * 100, "%");
+        for (int i = 0; i < players.length; i++) {
+            System.out.printf("%-15s%s%-8s%s%.2f%s\n", players[i], " wins = ", formatter.format(players[i].getWins()),
+                    " - ", players[i].getWins() / (double) optionsSize * 100, "%");
         }
     }
 
@@ -95,28 +95,44 @@ public class Main {
         boolean flag;
         PlayoffPicture picture = new PlayoffPicture(false);
 
+        //MIL - DET
         flag = picture.getRound1()[0].setSeries(i1);
-        if (!flag)
+        if (!flag) {
             return null;
+        }
+        //BOS - IND
         flag = picture.getRound1()[1].setSeries(i2);
-        if (!flag)
+        if (!flag) {
             return null;
+        }
+        //PHI - BKN
         flag = picture.getRound1()[2].setSeries(i3);
-        if (!flag)
+        if (!flag) {
             return null;
+        }
+        //TOR - ORL
         flag = picture.getRound1()[3].setSeries(i4);
-        if (!flag)
+        if (!flag) {
             return null;
+        }
+        //GS - LAC
         flag = picture.getRound1()[4].setSeries(i5);
-        if (!flag)
+        if (!flag) {
             return null;
-        flag = picture.getRound1()[6].setSeries(i7);
-        if (!flag)
-            return null;
-        flag = picture.getRound1()[7].setSeries(i8);
-        if (!flag)
-            return null;
+        }
+        //HOU - UTA
         flag = picture.getRound1()[5].setSeries(i6);
+        if (!flag) {
+            return null;
+        }
+        //POR - OKC
+        flag = picture.getRound1()[6].setSeries(i7);
+        if (!flag) {
+            return null;
+        }
+        //DEN - SA
+        flag = picture.getRound1()[7].setSeries(i8);
+
 
         if (flag) {
             return picture;
@@ -196,12 +212,13 @@ public class Main {
     }
 
     private static Player[] initPlayers() {
-        Player[] players = new Player[5];
+        Player[] players = new Player[6];
         players[0] = Player.initGuy();
         players[1] = Player.initOren();
         players[2] = Player.initMaman();
         players[3] = Player.initRittner();
         players[4] = Player.initOrT();
+        players[5] = Player.initTom();
         //todo: complete init shit
         //players[5] = Player.initMatan();
         //players[6] = Player.initTom();

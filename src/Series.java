@@ -28,71 +28,125 @@ public class Series {
     }
 
     public boolean setSeries(int magicNum) {
-        switch (magicNum) {
-            case 1:
-                if (team2Wins == 0) {
-                    team1Wins = 4;
-                    break;
-                } else {
-                    return false;
-                }
-            case 2:
-                if (team2Wins <= 1) {
-                    team1Wins = 4;
-                    team2Wins = 1;
-                    break;
-                } else {
-                    return false;
-                }
-            case 3:
-                if (team2Wins <= 2) {
-                    team1Wins = 4;
-                    team2Wins = 2;
-                    break;
-                } else {
-                    return false;
-                }
-            case 4:
-                if (team2Wins <= 3) {
-                    team1Wins = 4;
-                    team2Wins = 3;
-                    break;
-                } else {
-                    return false;
-                }
-            case 5:
-                if (team1Wins == 0) {
-                    team2Wins = 4;
-                    break;
-                } else {
-                    return false;
-                }
-            case 6:
-                if (team1Wins <= 1) {
-                    team1Wins = 1;
-                    team2Wins = 4;
-                    break;
-                } else {
-                    return false;
-                }
-            case 7:
-                if (team1Wins <= 2) {
-                    team1Wins = 2;
-                    team2Wins = 4;
-                    break;
-                } else {
-                    return false;
-                }
-            case 8:
-                if (team1Wins <= 3) {
-                    team1Wins = 3;
-                    team2Wins = 4;
-                    break;
-                } else {
-                    return false;
-                }
+        if (this.isSeriesDone()) {
+            switch (magicNum) {
+                case 1:
+                    if (team1Wins == 4 && team2Wins == 0) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 2:
+                    if (team1Wins == 4 && team2Wins == 1) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 3:
+                    if (team1Wins == 4 && team2Wins == 2) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 4:
+                    if (team1Wins == 4 && team2Wins == 3) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 5:
+                    if (team1Wins == 0 && team2Wins == 4) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 6:
+                    if (team1Wins == 1 && team2Wins == 4) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 7:
+                    if (team1Wins == 2 && team2Wins == 4) {
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 8:
+                    if (team1Wins == 3 && team2Wins == 4) {
+                        break;
+                    } else {
+                        return false;
+                    }
+            }
+            return true;
+        } else {
+            switch (magicNum) {
+                case 1:
+                    if (team2Wins == 0) {
+                        team1Wins = 4;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 2:
+                    if (team2Wins <= 1) {
+                        team1Wins = 4;
+                        team2Wins = 1;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 3:
+                    if (team2Wins <= 2) {
+                        team1Wins = 4;
+                        team2Wins = 2;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 4:
+                    if (team2Wins <= 3) {
+                        team1Wins = 4;
+                        team2Wins = 3;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 5:
+                    if (team1Wins == 0) {
+                        team2Wins = 4;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 6:
+                    if (team1Wins <= 1) {
+                        team1Wins = 1;
+                        team2Wins = 4;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 7:
+                    if (team1Wins <= 2) {
+                        team1Wins = 2;
+                        team2Wins = 4;
+                        break;
+                    } else {
+                        return false;
+                    }
+                case 8:
+                    if (team1Wins <= 3) {
+                        team1Wins = 3;
+                        team2Wins = 4;
+                        break;
+                    } else {
+                        return false;
+                    }
+            }
+            return true;
         }
-        return true;
     }
 
     public Team getTeam1() {
@@ -181,5 +235,9 @@ public class Series {
     @Override
     public String toString() {
         return "{" + team1 + ":" + team1Wins + ", " + team2 + ":" + team2Wins + '}';
+    }
+
+    public boolean isSeriesDone() {
+        return team1Wins == 4 || team2Wins == 4;
     }
 }

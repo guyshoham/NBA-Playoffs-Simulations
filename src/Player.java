@@ -48,22 +48,22 @@ public class Player {
     public static Player initGuy() {
         Player guy = new Player("Guy Shoham");
         PlayoffPicture guyBet = new PlayoffPicture(true);
-        guyBet.getRound1()[0].setSeries(4, 0);
+        guyBet.getRound1()[0].setSeries(4, 1);
         guyBet.getRound1()[1].setSeries(4, 2);
-        guyBet.getRound1()[2].setSeries(4, 1);
-        guyBet.getRound1()[3].setSeries(4, 0);
+        guyBet.getRound1()[2].setSeries(4, 2);
+        guyBet.getRound1()[3].setSeries(4, 1);
         guyBet.getRound1()[4].setSeries(4, 0);
         guyBet.getRound1()[5].setSeries(4, 2);
         guyBet.getRound1()[6].setSeries(2, 4);
-        guyBet.getRound1()[7].setSeries(4, 3);
+        guyBet.getRound1()[7].setSeries(4, 2);
         guyBet.qualifyTeams();
-        guyBet.getRound2()[0].setSeries(4, 1);
+        guyBet.getRound2()[0].setSeries(4, 2);
         guyBet.getRound2()[1].setSeries(2, 4);
         guyBet.getRound2()[2].setSeries(4, 2);
         guyBet.getRound2()[3].setSeries(4, 2);
         guyBet.qualifyTeams();
         guyBet.getConfFinals()[0].setSeries(4, 3);
-        guyBet.getConfFinals()[1].setSeries(4, 2);
+        guyBet.getConfFinals()[1].setSeries(4, 1);
         guyBet.qualifyTeams();
         guyBet.getFinals().setSeries(2, 4);
         guy.setBet(guyBet);
@@ -146,7 +146,7 @@ public class Player {
     }
 
     public static Player initOrT() {
-        Player orT = new Player("or shilon");
+        Player orT = new Player("Or Shilon");
         PlayoffPicture orTBet = new PlayoffPicture(true);
         orTBet.getRound1()[0].setSeries(4, 1);
         orTBet.getRound1()[1].setSeries(4, 2);
@@ -202,17 +202,17 @@ public class Player {
         tomBet.getRound1()[1].setSeries(4, 2);
         tomBet.getRound1()[2].setSeries(4, 1);
         tomBet.getRound1()[3].setSeries(4, 0);
-        tomBet.getRound1()[4].setSeries(4, 0);
-        tomBet.getRound1()[5].setSeries(4, 1);
-        tomBet.getRound1()[6].setSeries(2, 4);
-        tomBet.getRound1()[7].setSeries(4, 3);
+        tomBet.getRound1()[4].setSeries(4, 1);
+        tomBet.getRound1()[5].setSeries(4, 2);
+        tomBet.getRound1()[6].setSeries(3, 4);
+        tomBet.getRound1()[7].setSeries(4, 1);
         tomBet.qualifyTeams();
-        tomBet.getRound2()[0].setSeries(4, 1);
+        tomBet.getRound2()[0].setSeries(4, 3);
         tomBet.getRound2()[1].setSeries(2, 4);
         tomBet.getRound2()[2].setSeries(4, 2);
-        tomBet.getRound2()[3].setSeries(4, 2);
+        tomBet.getRound2()[3].setSeries(3, 4);
         tomBet.qualifyTeams();
-        tomBet.getConfFinals()[0].setSeries(3, 4);
+        tomBet.getConfFinals()[0].setSeries(4, 3);
         tomBet.getConfFinals()[1].setSeries(4, 1);
         tomBet.qualifyTeams();
         tomBet.getFinals().setSeries(2, 4);

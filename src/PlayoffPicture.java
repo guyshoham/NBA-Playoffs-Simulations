@@ -36,21 +36,21 @@ public class PlayoffPicture {
         //just temporary editing
 
         //MIL - DET
-        round1[0].setSeries(2, 0);
+        round1[0].setSeries(4, 1);
         //BOS - IND
-        round1[1].setSeries(2, 0);
+        round1[1].setSeries(4, 2);
         //PHI - BKN
-        round1[2].setSeries(2, 0);
+        round1[2].setSeries(4, 1);
         //TOR - ORL
-        round1[3].setSeries(2, 0);
+        round1[3].setSeries(4, 0);
         //GS - LAC
-        round1[4].setSeries(0, 2);
+        round1[4].setSeries(4, 0);
         //HOU - UTA
-        round1[5].setSeries(2, 0);
+        round1[5].setSeries(4, 1);
         //POR - OKC
-        round1[6].setSeries(0, 2);
+        round1[6].setSeries(2, 4);
         //DEN - SA
-        round1[7].setSeries(0, 2);
+        round1[7].setSeries(4, 3);
     }
 
     public Series[] getRound1() {
