@@ -8,11 +8,23 @@ public class Main {
 
     public static void main(String[] args) {
         Player[] players = initPlayers();
-        startSimulation(players);
+
+        long simulationStart = System.currentTimeMillis();
+        ArrayList<PlayoffPicture> options = startSimulation();
+        long simulationEnd = System.currentTimeMillis();
+        long simulationTotal = simulationEnd - simulationStart;
+
+        long calculationStart = System.currentTimeMillis();
+        calculateScore(options, players);
+        long calculationEnd = System.currentTimeMillis();
+        long calculationTotal = calculationEnd - calculationStart;
+
+        printResult(players, options.size());
+        System.out.println("\nsimulation time: " + simulationTotal / 1000 + "s");
+        System.out.println("calculateScore time: " + calculationTotal / 1000 + "s");
     }
 
-    private static void startSimulation(Player[] players) {
-        long startTimeSimulation = System.currentTimeMillis();
+    private static ArrayList<PlayoffPicture> startSimulation() {
         ArrayList<PlayoffPicture> options = new ArrayList<>();
         int count = 0;
         for (int i1 = 1; i1 <= 8; i1++) {
@@ -62,25 +74,21 @@ public class Main {
         int optionsSize = options.size();
         System.out.println("\n1st round simulation has done with " + formatter.format(optionsSize) + " possible options.\n");
 
-        long startTimeCalculationScore = System.currentTimeMillis();
+        return options;
+    }
+
+    private static void calculateScore(ArrayList<PlayoffPicture> options, Player[] players) {
         for (PlayoffPicture option : options) {
-            calculateScore(option, players);
+            calculate(option, players);
         }
-        long endTimeCalculationScore = System.currentTimeMillis();
-        long totalTimeCalculationScore = endTimeCalculationScore - startTimeCalculationScore;
+    }
 
-        System.out.printf("%-15s%-8s%s%.2f%s\n", "Guy wins = ", formatter.format(players[0].getWins()), " - ", players[0].getWins() / (double) optionsSize * 100, "%");
-        System.out.printf("%-15s%-8s%s%.2f%s\n", "Oren wins = ", formatter.format(players[1].getWins()), " - ", players[1].getWins() / (double) optionsSize * 100, "%");
-        System.out.printf("%-15s%-8s%s%.2f%s\n", "Maman wins = ", formatter.format(players[2].getWins()), " - ", players[2].getWins() / (double) optionsSize * 100, "%");
-        System.out.printf("%-15s%-8s%s%.2f%s\n", "Rittner wins = ", formatter.format(players[3].getWins()), " - ", players[3].getWins() / (double) optionsSize * 100, "%");
-        System.out.printf("%-15s%-8s%s%.2f%s\n", "OrT wins = ", formatter.format(players[4].getWins()), " - ", players[4].getWins() / (double) optionsSize * 100, "%");
-        //System.out.printf("%-15s%-8s%s%.2f%s\n", "Matan wins = ", formatter.format(players[5].getWins()), " - ", players[5].getWins() / (double) optionsSize * 100, "%");
-        //System.out.printf("%-15s%-8s%s%.2f%s\n", "Tom wins = ", formatter.format(players[6].getWins()), " - ", players[6].getWins() / (double) optionsSize * 100, "%");
+    private static void printResult(Player[] players, int optionsSize) {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
 
-        long endTimeSimulation = System.currentTimeMillis();
-        long totalTimeSimulation = endTimeSimulation - startTimeSimulation;
-        System.out.println("\nsimulation time: " + totalTimeSimulation / 1000 + "s");
-        System.out.println("calculateScore time: " + totalTimeCalculationScore / 1000 + "s");
+        for (int i = 0; i < 5; i++) {
+            System.out.printf("%-15s%s%-8s%s%.2f%s\n", players[i], " wins = ", formatter.format(players[i].getWins()), " - ", players[i].getWins() / (double) optionsSize * 100, "%");
+        }
     }
 
     public static PlayoffPicture getNewOption(int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8) {
@@ -143,7 +151,7 @@ public class Main {
         return picture;
     }
 
-    private static void calculateScore(PlayoffPicture picture, Player[] players) {
+    private static void calculate(PlayoffPicture picture, Player[] players) {
         for (Player player : players) {
             for (int i = 0; i < 8; i++) {
                 player.addScore(Series.compareSeries(picture.getRound1()[i], player.getBet().getRound1()[i], 1));
@@ -189,189 +197,14 @@ public class Main {
 
     private static Player[] initPlayers() {
         Player[] players = new Player[5];
-        players[0] = (initGuy());
-        players[1] = (initOren());
-        players[2] = (initMaman());
-        players[3] = (initRittner());
-        players[4] = (initOrT());
+        players[0] = Player.initGuy();
+        players[1] = Player.initOren();
+        players[2] = Player.initMaman();
+        players[3] = Player.initRittner();
+        players[4] = Player.initOrT();
         //todo: complete init shit
-        //players[5] = (initMatan());
-        //players[6] = (initTom());
+        //players[5] = Player.initMatan();
+        //players[6] = Player.initTom();
         return players;
-    }
-
-    private static Player initGuy() {
-        Player guy = new Player("Guy Shoham");
-        PlayoffPicture guyBet = new PlayoffPicture(true);
-        guyBet.getRound1()[0].setSeries(4, 0);
-        guyBet.getRound1()[1].setSeries(4, 2);
-        guyBet.getRound1()[2].setSeries(4, 1);
-        guyBet.getRound1()[3].setSeries(4, 0);
-        guyBet.getRound1()[4].setSeries(4, 0);
-        guyBet.getRound1()[5].setSeries(4, 2);
-        guyBet.getRound1()[6].setSeries(2, 4);
-        guyBet.getRound1()[7].setSeries(4, 3);
-        guyBet.qualifyTeams();
-        guyBet.getRound2()[0].setSeries(4, 1);
-        guyBet.getRound2()[1].setSeries(2, 4);
-        guyBet.getRound2()[2].setSeries(4, 2);
-        guyBet.getRound2()[3].setSeries(4, 2);
-        guyBet.qualifyTeams();
-        guyBet.getConfFinals()[0].setSeries(4, 3);
-        guyBet.getConfFinals()[1].setSeries(4, 2);
-        guyBet.qualifyTeams();
-        guyBet.getFinals().setSeries(2, 4);
-        guy.setBet(guyBet);
-        return guy;
-    }
-
-    private static Player initOren() {
-        Player oren = new Player("Oren Savir");
-        PlayoffPicture orenBet = new PlayoffPicture(true);
-        orenBet.getRound1()[0].setSeries(4, 0);
-        orenBet.getRound1()[1].setSeries(4, 2);
-        orenBet.getRound1()[2].setSeries(4, 1);
-        orenBet.getRound1()[3].setSeries(4, 0);
-        orenBet.getRound1()[4].setSeries(4, 1);
-        orenBet.getRound1()[5].setSeries(4, 2);
-        orenBet.getRound1()[6].setSeries(1, 4);
-        orenBet.getRound1()[7].setSeries(4, 3);
-        orenBet.qualifyTeams();
-        orenBet.getRound2()[0].setSeries(4, 2);
-        orenBet.getRound2()[1].setSeries(2, 4);
-        orenBet.getRound2()[2].setSeries(4, 2);
-        orenBet.getRound2()[3].setSeries(4, 3);
-        orenBet.qualifyTeams();
-        orenBet.getConfFinals()[0].setSeries(3, 4);
-        orenBet.getConfFinals()[1].setSeries(4, 1);
-        orenBet.qualifyTeams();
-        orenBet.getFinals().setSeries(2, 4);
-        oren.setBet(orenBet);
-        return oren;
-    }
-
-    private static Player initMaman() {
-        Player maman = new Player("Roy Maman");
-        PlayoffPicture mamanBet = new PlayoffPicture(true);
-        mamanBet.getRound1()[0].setSeries(4, 0);
-        mamanBet.getRound1()[1].setSeries(4, 2);
-        mamanBet.getRound1()[2].setSeries(4, 0);
-        mamanBet.getRound1()[3].setSeries(4, 0);
-        mamanBet.getRound1()[4].setSeries(4, 1);
-        mamanBet.getRound1()[5].setSeries(4, 1);
-        mamanBet.getRound1()[6].setSeries(4, 3);
-        mamanBet.getRound1()[7].setSeries(2, 4);
-        mamanBet.qualifyTeams();
-        mamanBet.getRound2()[0].setSeries(4, 3);
-        mamanBet.getRound2()[1].setSeries(2, 4);
-        mamanBet.getRound2()[2].setSeries(4, 2);
-        mamanBet.getRound2()[3].setSeries(4, 3);
-        mamanBet.qualifyTeams();
-        mamanBet.getConfFinals()[0].setSeries(2, 4);
-        mamanBet.getConfFinals()[1].setSeries(4, 1);
-        mamanBet.qualifyTeams();
-        mamanBet.getFinals().setSeries(4, 1);
-        maman.setBet(mamanBet);
-        return maman;
-    }
-
-    private static Player initRittner() {
-        Player rittner = new Player("Or Rittner");
-        PlayoffPicture rittnerBet = new PlayoffPicture(true);
-        rittnerBet.getRound1()[0].setSeries(4, 0);
-        rittnerBet.getRound1()[1].setSeries(4, 3);
-        rittnerBet.getRound1()[2].setSeries(4, 1);
-        rittnerBet.getRound1()[3].setSeries(4, 0);
-        rittnerBet.getRound1()[4].setSeries(4, 0);
-        rittnerBet.getRound1()[5].setSeries(4, 2);
-        rittnerBet.getRound1()[6].setSeries(2, 4);
-        rittnerBet.getRound1()[7].setSeries(4, 3);
-        rittnerBet.qualifyTeams();
-        rittnerBet.getRound2()[0].setSeries(4, 1);
-        rittnerBet.getRound2()[1].setSeries(3, 4);
-        rittnerBet.getRound2()[2].setSeries(4, 2);
-        rittnerBet.getRound2()[3].setSeries(4, 2);
-        rittnerBet.qualifyTeams();
-        rittnerBet.getConfFinals()[0].setSeries(2, 4);
-        rittnerBet.getConfFinals()[1].setSeries(4, 1);
-        rittnerBet.qualifyTeams();
-        rittnerBet.getFinals().setSeries(2, 4);
-        rittner.setBet(rittnerBet);
-        return rittner;
-    }
-
-    private static Player initOrT() {
-        Player orT = new Player("or shilon");
-        PlayoffPicture orTBet = new PlayoffPicture(true);
-        orTBet.getRound1()[0].setSeries(4, 1);
-        orTBet.getRound1()[1].setSeries(4, 2);
-        orTBet.getRound1()[2].setSeries(4, 1);
-        orTBet.getRound1()[3].setSeries(4, 0);
-        orTBet.getRound1()[4].setSeries(4, 0);
-        orTBet.getRound1()[5].setSeries(4, 1);
-        orTBet.getRound1()[6].setSeries(2, 4);
-        orTBet.getRound1()[7].setSeries(4, 3);
-        orTBet.qualifyTeams();
-        orTBet.getRound2()[0].setSeries(4, 1);
-        orTBet.getRound2()[1].setSeries(2, 4);
-        orTBet.getRound2()[2].setSeries(4, 2);
-        orTBet.getRound2()[3].setSeries(4, 2);
-        orTBet.qualifyTeams();
-        orTBet.getConfFinals()[0].setSeries(3, 4);
-        orTBet.getConfFinals()[1].setSeries(4, 1);
-        orTBet.qualifyTeams();
-        orTBet.getFinals().setSeries(2, 4);
-        orT.setBet(orTBet);
-        return orT;
-    }
-
-    private static Player initMatan() {
-        Player matan = new Player("Matan Shavit");
-        PlayoffPicture matanBet = new PlayoffPicture(true);
-        matanBet.getRound1()[0].setSeries(4, 1);
-        matanBet.getRound1()[1].setSeries(4, 2);
-        matanBet.getRound1()[2].setSeries(4, 1);
-        matanBet.getRound1()[3].setSeries(4, 0);
-        matanBet.getRound1()[4].setSeries(4, 0);
-        matanBet.getRound1()[5].setSeries(4, 1);
-        matanBet.getRound1()[6].setSeries(2, 4);
-        matanBet.getRound1()[7].setSeries(4, 3);
-        matanBet.qualifyTeams();
-        matanBet.getRound2()[0].setSeries(4, 1);
-        matanBet.getRound2()[1].setSeries(2, 4);
-        matanBet.getRound2()[2].setSeries(4, 2);
-        matanBet.getRound2()[3].setSeries(4, 2);
-        matanBet.qualifyTeams();
-        matanBet.getConfFinals()[0].setSeries(3, 4);
-        matanBet.getConfFinals()[1].setSeries(4, 1);
-        matanBet.qualifyTeams();
-        matanBet.getFinals().setSeries(2, 4);
-        matan.setBet(matanBet);
-        return matan;
-    }
-
-    private static Player initTom() {
-        Player tom = new Player("Tom Sanderovich");
-        PlayoffPicture tomBet = new PlayoffPicture(true);
-        tomBet.getRound1()[0].setSeries(4, 1);
-        tomBet.getRound1()[1].setSeries(4, 2);
-        tomBet.getRound1()[2].setSeries(4, 1);
-        tomBet.getRound1()[3].setSeries(4, 0);
-        tomBet.getRound1()[4].setSeries(4, 0);
-        tomBet.getRound1()[5].setSeries(4, 1);
-        tomBet.getRound1()[6].setSeries(2, 4);
-        tomBet.getRound1()[7].setSeries(4, 3);
-        tomBet.qualifyTeams();
-        tomBet.getRound2()[0].setSeries(4, 1);
-        tomBet.getRound2()[1].setSeries(2, 4);
-        tomBet.getRound2()[2].setSeries(4, 2);
-        tomBet.getRound2()[3].setSeries(4, 2);
-        tomBet.qualifyTeams();
-        tomBet.getConfFinals()[0].setSeries(3, 4);
-        tomBet.getConfFinals()[1].setSeries(4, 1);
-        tomBet.qualifyTeams();
-        tomBet.getFinals().setSeries(2, 4);
-        tom.setBet(tomBet);
-        return tom;
     }
 }
