@@ -19,7 +19,7 @@ public class Main {
         long calculationEnd = System.currentTimeMillis();
         long calculationTotal = calculationEnd - calculationStart;
 
-        printResult(players, options.size());
+        printResult(players);
         System.out.println("\nsimulation time: " + simulationTotal / 1000 + "s");
         System.out.println("calculateScore time: " + calculationTotal / 1000 + "s");
     }
@@ -83,11 +83,15 @@ public class Main {
         }
     }
 
-    private static void printResult(Player[] players, int optionsSize) {
+    private static void printResult(Player[] players) {
+        int numOfWins = 0;
+        for (Player player : players) {
+            numOfWins += player.getWins();
+        }
         DecimalFormat formatter = new DecimalFormat("#,###,###");
-        for (int i = 0; i < players.length; i++) {
-            System.out.printf("%-15s%s%-8s%s%.2f%s\n", players[i], " wins = ", formatter.format(players[i].getWins()),
-                    " - ", players[i].getWins() / (double) optionsSize * 100, "%");
+        for (Player player : players) {
+            System.out.printf("%-15s%s%-8s%s%.2f%s\n", player, " wins = ", formatter.format(player.getWins()),
+                    " - ", player.getWins() / (double) numOfWins * 100, "%");
         }
     }
 
@@ -183,17 +187,24 @@ public class Main {
 
         //check player with highest score
         if (!allZero(players)) {
-            int max = 0, maxPlayer = 0;
-            for (int i = 0; i < players.length; i++) {
-                if (players[i].getScore() > max) {
-                    max = players[i].getScore();
-                    maxPlayer = i;
+
+            ArrayList<Player> winners = new ArrayList<>();
+            int max = 0;
+            for (Player player : players) {
+                if (player.getScore() > max) {
+                    winners.clear();
+                    max = player.getScore();
+                    winners.add(player);
+                }
+                if (player.getScore() == max) {
+                    winners.add(player);
                 }
             }
 
-            //add win to player with highest score
-            players[maxPlayer].addWin();
-            //System.out.println("player[" + players.get(maxPlayer).getName() + "," + max + "]");
+            //add win to players with highest score
+            for (Player winner : winners) {
+                winner.addWin();
+            }
         }
 
         //reset players' score
