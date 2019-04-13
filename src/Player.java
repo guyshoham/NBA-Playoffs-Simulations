@@ -173,24 +173,24 @@ public class Player implements Comparable<Player> {
     public static Player initMatan() {
         Player matan = new Player("Matan Shavit");
         PlayoffPicture matanBet = new PlayoffPicture(true);
-        matanBet.getRound1()[0].setSeries(4, 1);
+        matanBet.getRound1()[0].setSeries(4, 0);
         matanBet.getRound1()[1].setSeries(4, 2);
         matanBet.getRound1()[2].setSeries(4, 1);
         matanBet.getRound1()[3].setSeries(4, 0);
         matanBet.getRound1()[4].setSeries(4, 0);
-        matanBet.getRound1()[5].setSeries(4, 1);
-        matanBet.getRound1()[6].setSeries(2, 4);
-        matanBet.getRound1()[7].setSeries(4, 3);
+        matanBet.getRound1()[5].setSeries(4, 2);
+        matanBet.getRound1()[6].setSeries(3, 4);
+        matanBet.getRound1()[7].setSeries(4, 2);
         matanBet.qualifyTeams();
-        matanBet.getRound2()[0].setSeries(4, 1);
-        matanBet.getRound2()[1].setSeries(2, 4);
+        matanBet.getRound2()[0].setSeries(4, 3);
+        matanBet.getRound2()[1].setSeries(1, 4);
         matanBet.getRound2()[2].setSeries(4, 2);
-        matanBet.getRound2()[3].setSeries(4, 2);
+        matanBet.getRound2()[3].setSeries(3, 4);
         matanBet.qualifyTeams();
-        matanBet.getConfFinals()[0].setSeries(3, 4);
-        matanBet.getConfFinals()[1].setSeries(4, 1);
+        matanBet.getConfFinals()[0].setSeries(2, 4);
+        matanBet.getConfFinals()[1].setSeries(4, 0);
         matanBet.qualifyTeams();
-        matanBet.getFinals().setSeries(2, 4);
+        matanBet.getFinals().setSeries(1, 4);
         matan.setBet(matanBet);
         return matan;
     }

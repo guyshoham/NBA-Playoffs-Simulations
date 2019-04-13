@@ -228,16 +228,14 @@ public class Main {
     }
 
     private static Player[] initPlayers() {
-        Player[] players = new Player[6];
+        Player[] players = new Player[7];
         players[0] = Player.initGuy();
         players[1] = Player.initOren();
         players[2] = Player.initMaman();
         players[3] = Player.initRittner();
         players[4] = Player.initOrT();
-        players[5] = Player.initTom();
-        //todo: complete init shit
-        //players[5] = Player.initMatan();
-        //players[6] = Player.initTom();
+        players[5] = Player.initMatan();
+        players[6] = Player.initTom();
         return players;
     }
 }
