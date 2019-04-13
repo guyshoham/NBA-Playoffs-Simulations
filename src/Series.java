@@ -28,126 +28,105 @@ public class Series {
     }
 
     public boolean setSeries(int magicNum) {
-        if (this.isSeriesDone()) {
-            switch (magicNum) {
-                case 1:
-                    if (team1Wins == 4 && team2Wins == 0) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 2:
-                    if (team1Wins == 4 && team2Wins == 1) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 3:
-                    if (team1Wins == 4 && team2Wins == 2) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 4:
-                    if (team1Wins == 4 && team2Wins == 3) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 5:
-                    if (team1Wins == 0 && team2Wins == 4) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 6:
-                    if (team1Wins == 1 && team2Wins == 4) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 7:
-                    if (team1Wins == 2 && team2Wins == 4) {
-                        break;
-                    } else {
-                        return false;
-                    }
-                case 8:
-                    if (team1Wins == 3 && team2Wins == 4) {
-                        break;
-                    } else {
-                        return false;
-                    }
-            }
-            return true;
-        } else {
-            switch (magicNum) {
-                case 1:
+        switch (magicNum) {
+            case 1:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 4 && team2Wins == 0;
+                } else {
                     if (team2Wins == 0) {
                         team1Wins = 4;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 2:
+                }
+            case 2:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 4 && team2Wins == 1;
+                } else {
                     if (team2Wins <= 1) {
                         team1Wins = 4;
                         team2Wins = 1;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 3:
+                }
+            case 3:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 4 && team2Wins == 2;
+                } else {
                     if (team2Wins <= 2) {
                         team1Wins = 4;
                         team2Wins = 2;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 4:
+                }
+            case 4:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 4 && team2Wins == 3;
+                } else {
                     if (team2Wins <= 3) {
                         team1Wins = 4;
                         team2Wins = 3;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 5:
+                }
+            case 5:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 0 && team2Wins == 4;
+                } else {
                     if (team1Wins == 0) {
                         team2Wins = 4;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 6:
+                }
+            case 6:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 1 && team2Wins == 4;
+                } else {
                     if (team1Wins <= 1) {
                         team1Wins = 1;
                         team2Wins = 4;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 7:
+                }
+            case 7:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 2 && team2Wins == 4;
+                } else {
                     if (team1Wins <= 2) {
                         team1Wins = 2;
                         team2Wins = 4;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-                case 8:
+                }
+            case 8:
+                if (this.isSeriesDone()) {
+                    return team1Wins == 3 && team2Wins == 4;
+                } else {
                     if (team1Wins <= 3) {
                         team1Wins = 3;
                         team2Wins = 4;
-                        break;
+                        return true;
                     } else {
                         return false;
                     }
-            }
-            return true;
+                }
         }
+        return true;
     }
+
 
     public Team getTeam1() {
         return team1;
