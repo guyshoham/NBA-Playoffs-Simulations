@@ -197,9 +197,7 @@ public class Main {
         //todo: complete init shit
         //players[5] = (initMatan());
         //players[6] = (initTom());
-
         return players;
-
     }
 
     private static Player initGuy() {
@@ -329,11 +327,51 @@ public class Main {
 
     private static Player initMatan() {
         Player matan = new Player("Matan Shavit");
+        PlayoffPicture matanBet = new PlayoffPicture(true);
+        matanBet.getRound1()[0].setSeries(4, 1);
+        matanBet.getRound1()[1].setSeries(4, 2);
+        matanBet.getRound1()[2].setSeries(4, 1);
+        matanBet.getRound1()[3].setSeries(4, 0);
+        matanBet.getRound1()[4].setSeries(4, 0);
+        matanBet.getRound1()[5].setSeries(4, 1);
+        matanBet.getRound1()[6].setSeries(2, 4);
+        matanBet.getRound1()[7].setSeries(4, 3);
+        matanBet.qualifyTeams();
+        matanBet.getRound2()[0].setSeries(4, 1);
+        matanBet.getRound2()[1].setSeries(2, 4);
+        matanBet.getRound2()[2].setSeries(4, 2);
+        matanBet.getRound2()[3].setSeries(4, 2);
+        matanBet.qualifyTeams();
+        matanBet.getConfFinals()[0].setSeries(3, 4);
+        matanBet.getConfFinals()[1].setSeries(4, 1);
+        matanBet.qualifyTeams();
+        matanBet.getFinals().setSeries(2, 4);
+        matan.setBet(matanBet);
         return matan;
     }
 
     private static Player initTom() {
         Player tom = new Player("Tom Sanderovich");
+        PlayoffPicture tomBet = new PlayoffPicture(true);
+        tomBet.getRound1()[0].setSeries(4, 1);
+        tomBet.getRound1()[1].setSeries(4, 2);
+        tomBet.getRound1()[2].setSeries(4, 1);
+        tomBet.getRound1()[3].setSeries(4, 0);
+        tomBet.getRound1()[4].setSeries(4, 0);
+        tomBet.getRound1()[5].setSeries(4, 1);
+        tomBet.getRound1()[6].setSeries(2, 4);
+        tomBet.getRound1()[7].setSeries(4, 3);
+        tomBet.qualifyTeams();
+        tomBet.getRound2()[0].setSeries(4, 1);
+        tomBet.getRound2()[1].setSeries(2, 4);
+        tomBet.getRound2()[2].setSeries(4, 2);
+        tomBet.getRound2()[3].setSeries(4, 2);
+        tomBet.qualifyTeams();
+        tomBet.getConfFinals()[0].setSeries(3, 4);
+        tomBet.getConfFinals()[1].setSeries(4, 1);
+        tomBet.qualifyTeams();
+        tomBet.getFinals().setSeries(2, 4);
+        tom.setBet(tomBet);
         return tom;
     }
 }

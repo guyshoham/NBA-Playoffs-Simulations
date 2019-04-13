@@ -35,13 +35,21 @@ public class PlayoffPicture {
     private void editPlayoff() {
         //just temporary editing
 
+        //MIL - DET
         round1[0].setSeries(2, 0);
+        //BOS - IND
         round1[1].setSeries(2, 0);
+        //PHI - BKN
         round1[2].setSeries(2, 0);
+        //TOR - ORL
         round1[3].setSeries(2, 0);
+        //GS - LAC
         round1[4].setSeries(0, 2);
+        //HOU - UTA
         round1[5].setSeries(2, 0);
+        //POR - OKC
         round1[6].setSeries(0, 2);
+        //DEN - SA
         round1[7].setSeries(0, 2);
     }
 
