@@ -2,11 +2,12 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 public class Main {
-    public static final double OPTIONS = Math.pow(8, 8);
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Player[] players = initPlayers();
 
         long simulationStart = System.currentTimeMillis();
@@ -20,11 +21,14 @@ public class Main {
         long calculationTotal = calculationEnd - calculationStart;
 
         printResult(players);
-        System.out.println("\nsimulation time: " + simulationTotal / 1000 + "s");
+
+        int min = (int) (simulationTotal / 1000 / 60), sec = (int) ((simulationTotal / 1000) % 60);
+        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         System.out.println("score calculate time: " + calculationTotal / 1000 + "s");
     }
 
     private static ArrayList<PlayoffPicture> startSimulation() {
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
         ArrayList<PlayoffPicture> options = new ArrayList<>();
         int count = 0;
         for (int i1 = 1; i1 <= 8; i1++) {
@@ -40,7 +44,7 @@ public class Main {
                                             options.add(picture);
                                         }
                                         if (count % 100000 == 0) {
-                                            System.out.printf("Simulating 1st round... %.2f%s\n", (count / OPTIONS * 100), "%");
+                                            System.out.printf("%s%s%.2f%s\n", formatter.format(options.size()), " possible options (", (count / Math.pow(8, 8) * 100), "%).");
                                             //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                                         }
                                         count++;
@@ -52,8 +56,8 @@ public class Main {
                                                             for (int i14 = 1; i14 <= 8; i14++) {
                                                                 for (int i15 = 1; i15 <= 8; i15++) {
                                                                     options.add(getNewOption(i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11, i12, i13, i14, i15));
-                                                                    System.out.println(count);
-                                                                    System.out.printf("%.2f%s\n", (count / Math.pow(8, 15)), "%");
+                                                                    System.out.printf("%s%s%.2f%s\n", formatter.format(options.size()), " possible options (", (count / Math.pow(8, 15) * 100), "%).\n");
+                                                                    count++;
                                                                 }
                                                             }
                                                         }
@@ -70,7 +74,6 @@ public class Main {
             }
         }//end of simulation loops
 
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
         int optionsSize = options.size();
         System.out.println("\n1st round simulation has done with " + formatter.format(optionsSize) + " possible options.\n");
 
@@ -78,12 +81,14 @@ public class Main {
     }
 
     private static void calculateScore(ArrayList<PlayoffPicture> options, Player[] players) {
+        System.out.println("\nCalculating results...\n");
+
         for (PlayoffPicture option : options) {
             calculate(option, players);
         }
     }
 
-    private static void printResult(Player[] players) {
+    private static void printResult(Player[] players) throws Exception {
         int numOfWins = 0;
         List<Player> sortedPlayers = new ArrayList<>();
         for (Player player : players) {
@@ -97,6 +102,7 @@ public class Main {
         for (Player player : sortedPlayers) {
             System.out.printf("%-15s%s%-8s%s%.2f%s\n", player, " wins = ", formatter.format(player.getWins()),
                     " - ", player.getWins() / (double) numOfWins * 100, "%");
+            sleep(500);
         }
     }
 
@@ -142,7 +148,6 @@ public class Main {
         //DEN - SA
         flag = picture.getRound1()[7].setSeries(i8);
 
-
         if (flag) {
             return picture;
         } else {
@@ -152,26 +157,84 @@ public class Main {
 
     public static PlayoffPicture getNewOption(int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8,
                                               int i9, int i10, int i11, int i12, int i13, int i14, int i15) {
+        boolean flag;
         PlayoffPicture picture = new PlayoffPicture(false);
 
-        picture.getRound1()[0].setSeries(i1);
-        picture.getRound1()[1].setSeries(i2);
-        picture.getRound1()[2].setSeries(i3);
-        picture.getRound1()[3].setSeries(i4);
-        picture.getRound1()[4].setSeries(i5);
-        picture.getRound1()[5].setSeries(i6);
-        picture.getRound1()[6].setSeries(i7);
-        picture.getRound1()[7].setSeries(i8);
-
-        picture.getRound2()[0].setSeries(i9);
-        picture.getRound2()[1].setSeries(i10);
-        picture.getRound2()[2].setSeries(i11);
-        picture.getRound2()[3].setSeries(i12);
-
-        picture.getConfFinals()[0].setSeries(i13);
-        picture.getConfFinals()[1].setSeries(i14);
-
-        picture.getFinals().setSeries(i15);
+        //MIL - DET
+        flag = picture.getRound1()[0].setSeries(i1);
+        if (!flag) {
+            return null;
+        }
+        //BOS - IND
+        flag = picture.getRound1()[1].setSeries(i2);
+        if (!flag) {
+            return null;
+        }
+        //PHI - BKN
+        flag = picture.getRound1()[2].setSeries(i3);
+        if (!flag) {
+            return null;
+        }
+        //TOR - ORL
+        flag = picture.getRound1()[3].setSeries(i4);
+        if (!flag) {
+            return null;
+        }
+        //GS - LAC
+        flag = picture.getRound1()[4].setSeries(i5);
+        if (!flag) {
+            return null;
+        }
+        //HOU - UTA
+        flag = picture.getRound1()[5].setSeries(i6);
+        if (!flag) {
+            return null;
+        }
+        //POR - OKC
+        flag = picture.getRound1()[6].setSeries(i7);
+        if (!flag) {
+            return null;
+        }
+        //DEN - SA
+        flag = picture.getRound1()[7].setSeries(i8);
+        if (!flag) {
+            return null;
+        }
+        //round2
+        flag = picture.getRound2()[0].setSeries(i9);
+        if (!flag) {
+            return null;
+        }
+        //round2
+        flag = picture.getRound2()[1].setSeries(i10);
+        if (!flag) {
+            return null;
+        }
+        //round2
+        flag = picture.getRound2()[2].setSeries(i11);
+        if (!flag) {
+            return null;
+        }
+        //round2
+        flag = picture.getRound2()[3].setSeries(i12);
+        if (!flag) {
+            return null;
+        }
+        //conFinals
+        flag = picture.getConfFinals()[3].setSeries(i13);
+        if (!flag) {
+            return null;
+        }
+        //conFinals
+        flag = picture.getConfFinals()[3].setSeries(i14);
+        if (!flag) {
+            return null;
+        }
+        //finals
+        flag = picture.getFinals().setSeries(i15);
+        if (!flag) {
+            return null;
+        }
 
         return picture;
     }
@@ -238,4 +301,9 @@ public class Main {
         players[6] = Player.initTom();
         return players;
     }
+
+    private static void sleep(int time) throws Exception {
+        TimeUnit.MILLISECONDS.sleep(time);
+    }
+
 }

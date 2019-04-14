@@ -41,10 +41,6 @@ public class Player implements Comparable<Player> {
         return wins;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static Player initGuy() {
         Player guy = new Player("Guy Shoham");
         PlayoffPicture guyBet = new PlayoffPicture(true);

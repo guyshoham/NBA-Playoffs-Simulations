@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class PlayoffPicture {
 
@@ -35,22 +33,37 @@ public class PlayoffPicture {
     private void editPlayoff() {
         //just temporary editing
 
+        //round1
         //MIL - DET
-        round1[0].setSeries(3, 3);
+        //round1[0].setSeries(0, 0);
         //BOS - IND
-        //round1[1].setSeries(4, 2);
+        //round1[1].setSeries(0, 0);
         //PHI - BKN
-        //round1[2].setSeries(4, 1);
+        round1[2].setSeries(0, 1);
         //TOR - ORL
-        //round1[3].setSeries(4, 0);
+        round1[3].setSeries(0, 1);
         //GS - LAC
-        //round1[4].setSeries(4, 0);
+        round1[4].setSeries(1, 0);
         //HOU - UTA
-        //round1[5].setSeries(4, 1);
+        //round1[5].setSeries(0, 0);
         //POR - OKC
-        //round1[6].setSeries(2, 4);
+        //round1[6].setSeries(0, 0);
         //DEN - SA
-        //round1[7].setSeries(4, 3);
+        round1[7].setSeries(0, 1);
+
+        //round2
+        //round2[0].setSeries(0, 0);
+        //round2[1].setSeries(0, 0);
+        //round2[2].setSeries(0, 0);
+        //round2[3].setSeries(0, 0);
+
+        //confFinals
+        //confFinals[0].setSeries(0, 0);
+        //confFinals[1].setSeries(0, 0);
+
+        //finals
+        //finals.setSeries(0, 0);
+
     }
 
     public Series[] getRound1() {

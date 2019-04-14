@@ -27,6 +27,13 @@ public class Series {
         this.team2Wins = team2Wins;
     }
 
+    public void setSeries(Team team1, Team team2, int team1Wins, int team2Wins) {
+        this.team1 = team1;
+        this.team2 = team2;
+        this.team1Wins = team1Wins;
+        this.team2Wins = team2Wins;
+    }
+
     public boolean setSeries(int magicNum) {
         switch (magicNum) {
             case 1:
