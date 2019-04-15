@@ -48,6 +48,7 @@ public class Player implements Comparable<Player> {
         guyBet.getRound1()[1].setSeries(4, 2);
         guyBet.getRound1()[2].setSeries(4, 2);
         guyBet.getRound1()[3].setSeries(4, 1);
+
         guyBet.getRound1()[4].setSeries(4, 0);
         guyBet.getRound1()[5].setSeries(4, 2);
         guyBet.getRound1()[6].setSeries(2, 4);
@@ -73,6 +74,7 @@ public class Player implements Comparable<Player> {
         orenBet.getRound1()[1].setSeries(4, 2);
         orenBet.getRound1()[2].setSeries(4, 1);
         orenBet.getRound1()[3].setSeries(4, 0);
+
         orenBet.getRound1()[4].setSeries(4, 1);
         orenBet.getRound1()[5].setSeries(4, 2);
         orenBet.getRound1()[6].setSeries(1, 4);
@@ -98,6 +100,7 @@ public class Player implements Comparable<Player> {
         mamanBet.getRound1()[1].setSeries(4, 2);
         mamanBet.getRound1()[2].setSeries(4, 0);
         mamanBet.getRound1()[3].setSeries(4, 0);
+
         mamanBet.getRound1()[4].setSeries(4, 0);
         mamanBet.getRound1()[5].setSeries(4, 1);
         mamanBet.getRound1()[6].setSeries(4, 3);
@@ -123,6 +126,7 @@ public class Player implements Comparable<Player> {
         rittnerBet.getRound1()[1].setSeries(4, 3);
         rittnerBet.getRound1()[2].setSeries(4, 1);
         rittnerBet.getRound1()[3].setSeries(4, 0);
+
         rittnerBet.getRound1()[4].setSeries(4, 0);
         rittnerBet.getRound1()[5].setSeries(4, 2);
         rittnerBet.getRound1()[6].setSeries(2, 4);
@@ -148,6 +152,7 @@ public class Player implements Comparable<Player> {
         orTBet.getRound1()[1].setSeries(4, 2);
         orTBet.getRound1()[2].setSeries(4, 1);
         orTBet.getRound1()[3].setSeries(4, 0);
+
         orTBet.getRound1()[4].setSeries(4, 0);
         orTBet.getRound1()[5].setSeries(4, 1);
         orTBet.getRound1()[6].setSeries(2, 4);
@@ -173,6 +178,7 @@ public class Player implements Comparable<Player> {
         matanBet.getRound1()[1].setSeries(4, 2);
         matanBet.getRound1()[2].setSeries(4, 1);
         matanBet.getRound1()[3].setSeries(4, 0);
+
         matanBet.getRound1()[4].setSeries(4, 0);
         matanBet.getRound1()[5].setSeries(4, 2);
         matanBet.getRound1()[6].setSeries(3, 4);
@@ -181,7 +187,7 @@ public class Player implements Comparable<Player> {
         matanBet.getRound2()[0].setSeries(4, 3);
         matanBet.getRound2()[1].setSeries(1, 4);
         matanBet.getRound2()[2].setSeries(4, 2);
-        matanBet.getRound2()[3].setSeries(3, 4);
+        matanBet.getRound2()[3].setSeries(2, 4);
         matanBet.qualifyTeams();
         matanBet.getConfFinals()[0].setSeries(2, 4);
         matanBet.getConfFinals()[1].setSeries(4, 0);
@@ -198,6 +204,7 @@ public class Player implements Comparable<Player> {
         tomBet.getRound1()[1].setSeries(4, 2);
         tomBet.getRound1()[2].setSeries(4, 1);
         tomBet.getRound1()[3].setSeries(4, 0);
+
         tomBet.getRound1()[4].setSeries(4, 1);
         tomBet.getRound1()[5].setSeries(4, 2);
         tomBet.getRound1()[6].setSeries(3, 4);
