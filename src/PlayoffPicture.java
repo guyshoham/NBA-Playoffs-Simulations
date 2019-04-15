@@ -35,9 +35,9 @@ public class PlayoffPicture {
 
         //round1
         //MIL - DET
-        //round1[0].setSeries(0, 0);
+        round1[0].setSeries(1, 0);
         //BOS - IND
-        //round1[1].setSeries(0, 0);
+        round1[1].setSeries(1, 0);
         //PHI - BKN
         round1[2].setSeries(0, 1);
         //TOR - ORL
@@ -45,9 +45,9 @@ public class PlayoffPicture {
         //GS - LAC
         round1[4].setSeries(1, 0);
         //HOU - UTA
-        //round1[5].setSeries(0, 0);
+        round1[5].setSeries(1, 0);
         //POR - OKC
-        //round1[6].setSeries(0, 0);
+        round1[6].setSeries(1, 0);
         //DEN - SA
         round1[7].setSeries(0, 1);
 
