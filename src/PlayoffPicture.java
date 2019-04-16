@@ -51,15 +51,21 @@ public class PlayoffPicture {
         //DEN - SA
         round1[7].setSeries(0, 1);
 
+        //qualifyTeams();
+
         //round2
         //round2[0].setSeries(0, 0);
         //round2[1].setSeries(0, 0);
         //round2[2].setSeries(0, 0);
         //round2[3].setSeries(0, 0);
 
+        //qualifyTeams();
+
         //confFinals
         //confFinals[0].setSeries(0, 0);
         //confFinals[1].setSeries(0, 0);
+
+        //qualifyTeams();
 
         //finals
         //finals.setSeries(0, 0);
