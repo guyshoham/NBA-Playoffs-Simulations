@@ -81,7 +81,7 @@ public class Main {
     }
 
     private static void calculateScore(ArrayList<PlayoffPicture> options, Player[] players) {
-        System.out.println("\nCalculating results...\n");
+        System.out.println("Calculating results...\n");
 
         for (PlayoffPicture option : options) {
             calculate(option, players);
@@ -100,7 +100,7 @@ public class Main {
 
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         for (Player player : sortedPlayers) {
-            System.out.printf("%-15s%s%-8s%s%.2f%s\n", player, " wins = ", formatter.format(player.getWins()),
+            System.out.printf("%-15s wins = %-9s%s%.2f%s\n", player, formatter.format(player.getWins()),
                     " - ", player.getWins() / (double) numOfWins * 100, "%");
             sleep(500);
         }
