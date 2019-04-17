@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
-
 public class Main {
     public static void main(String[] args) throws Exception {
         Player[] players = initPlayers();
