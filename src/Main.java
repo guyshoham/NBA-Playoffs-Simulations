@@ -6,33 +6,55 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        long simulationStart = System.currentTimeMillis();
+        long simulationStart, simulationEnd, simulationTotal;
+        int min, sec;
         Player[] players = initPlayers();
 
+        simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> firstRound = startFirstRoundSimulation();
+
         calculateScore(firstRound, players);
         printResult(players);
-        sleep(3000);
 
-        /*ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
+        simulationEnd = System.currentTimeMillis();
+        simulationTotal = simulationEnd - simulationStart;
+        min = (int) (simulationTotal / 1000 / 60);
+        sec = (int) ((simulationTotal / 1000) % 60);
+        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
+        sleep(3000);
+/*
+        ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
         calculateScore(secondRound, players);
         printResult(players);
+
+        simulationEnd = System.currentTimeMillis();
+        simulationTotal = simulationEnd - simulationStart;
+        min = (int) (simulationTotal / 1000 / 60);
+        sec = (int) ((simulationTotal / 1000) % 60);
+        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         sleep(3000);
 
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
         calculateScore(conFinals, players);
         printResult(players);
+
+        simulationEnd = System.currentTimeMillis();
+        simulationTotal = simulationEnd - simulationStart;
+        min = (int) (simulationTotal / 1000 / 60);
+        sec = (int) ((simulationTotal / 1000) % 60);
+        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         sleep(3000);
 
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
         calculateScore(finals, players);
         printResult(players);
-        sleep(3000);*/
 
-        long simulationEnd = System.currentTimeMillis();
-        long simulationTotal = simulationEnd - simulationStart;
-        int min = (int) (simulationTotal / 1000 / 60), sec = (int) ((simulationTotal / 1000) % 60);
+        simulationEnd = System.currentTimeMillis();
+        simulationTotal = simulationEnd - simulationStart;
+        min = (int) (simulationTotal / 1000 / 60);
+        sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
+        sleep(3000);*/
     }
 
     private static ArrayList<PlayoffPicture> startFirstRoundSimulation() {
