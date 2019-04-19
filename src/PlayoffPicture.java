@@ -110,4 +110,17 @@ public class PlayoffPicture {
                 "\nfinals=" + finals +
                 '}';
     }
+
+    public void setPicture(PlayoffPicture sec) {
+        for (int i = 0; i < round1.length; i++) {
+            round1[i].setSeries(sec.getRound1()[i]);
+        }
+        for (int i = 0; i < round2.length; i++) {
+            round2[i].setSeries(sec.getRound2()[i]);
+        }
+        for (int i = 0; i < confFinals.length; i++) {
+            confFinals[i].setSeries(sec.getConfFinals()[i]);
+        }
+        finals.setSeries(sec.getFinals());
+    }
 }

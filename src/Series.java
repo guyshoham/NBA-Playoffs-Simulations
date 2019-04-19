@@ -22,6 +22,13 @@ public class Series {
         this.team2 = team2Wins;
     }
 
+    public void setSeries(Series series) {
+        this.team1 = series.getTeam1();
+        this.team2 = series.getTeam2();
+        this.team1Wins = series.getTeam1Wins();
+        this.team2Wins = series.getTeam2Wins();
+    }
+
     public void setSeries(int team1Wins, int team2Wins) {
         this.team1Wins = team1Wins;
         this.team2Wins = team2Wins;
