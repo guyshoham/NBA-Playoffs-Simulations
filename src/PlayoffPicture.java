@@ -35,22 +35,22 @@ public class PlayoffPicture {
 
         //round1
         //MIL - DET
-        round1[0].setSeries(2, 0);
+        round1[0].setSeries(3, 0);
         //BOS - IND
-        round1[1].setSeries(3, 0);
+        round1[1].setSeries(4, 0);
         //PHI - BKN
-        round1[2].setSeries(2, 1);
+        round1[2].setSeries(3, 1);
         //TOR - ORL
-        round1[3].setSeries(2, 1);
+        round1[3].setSeries(3, 1);
 
         //GS - LAC
-        round1[4].setSeries(2, 1);
+        round1[4].setSeries(3, 1);
         //HOU - UTA
-        round1[5].setSeries(2, 0);
+        round1[5].setSeries(3, 0);
         //POR - OKC
-        round1[6].setSeries(2, 1);
+        round1[6].setSeries(3, 1);
         //DEN - SA
-        round1[7].setSeries(1, 2);
+        round1[7].setSeries(2, 2);
 
         //qualifyTeams();
 

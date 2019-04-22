@@ -12,7 +12,6 @@ public class Main {
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> firstRound = startFirstRoundSimulation();
-
         calculateScore(firstRound, players);
         printResult(players);
 
@@ -22,7 +21,8 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         sleep(3000);
-/*
+
+       /* simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
         calculateScore(secondRound, players);
         printResult(players);
@@ -32,8 +32,9 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        sleep(3000);
+        sleep(3000);*/
 
+        /*simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
         calculateScore(conFinals, players);
         printResult(players);
@@ -43,8 +44,9 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        sleep(3000);
+        sleep(3000);*/
 
+        /*simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
         calculateScore(finals, players);
         printResult(players);
