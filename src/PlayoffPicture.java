@@ -35,21 +35,22 @@ public class PlayoffPicture {
 
         //round1
         //MIL - DET
-        round1[0].setSeries(1, 0);
+        round1[0].setSeries(4, 0);
         //BOS - IND
-        round1[1].setSeries(1, 0);
+        round1[1].setSeries(4, 0);
         //PHI - BKN
-        round1[2].setSeries(1, 1);
+        round1[2].setSeries(3, 1);
         //TOR - ORL
-        round1[3].setSeries(0, 1);
+        round1[3].setSeries(3, 1);
+
         //GS - LAC
-        round1[4].setSeries(1, 1);
+        round1[4].setSeries(3, 1);
         //HOU - UTA
-        round1[5].setSeries(1, 0);
+        round1[5].setSeries(3, 1);
         //POR - OKC
-        round1[6].setSeries(1, 0);
+        round1[6].setSeries(3, 1);
         //DEN - SA
-        round1[7].setSeries(0, 1);
+        round1[7].setSeries(2, 2);
 
         //qualifyTeams();
 
@@ -108,5 +109,18 @@ public class PlayoffPicture {
                 "\nconfFinals=" + Arrays.toString(confFinals) +
                 "\nfinals=" + finals +
                 '}';
+    }
+
+    public void setPicture(PlayoffPicture sec) {
+        for (int i = 0; i < round1.length; i++) {
+            round1[i].setSeries(sec.getRound1()[i]);
+        }
+        for (int i = 0; i < round2.length; i++) {
+            round2[i].setSeries(sec.getRound2()[i]);
+        }
+        for (int i = 0; i < confFinals.length; i++) {
+            confFinals[i].setSeries(sec.getConfFinals()[i]);
+        }
+        finals.setSeries(sec.getFinals());
     }
 }
