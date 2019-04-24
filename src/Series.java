@@ -179,7 +179,8 @@ public class Series {
                     score += 2;
                     flag = true;
                 }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()) {
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
                     score += 2;
                 }
                 break;
@@ -189,7 +190,8 @@ public class Series {
                     score += 3;
                     flag = true;
                 }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()) {
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
                     score += 2;
                 }
                 break;
@@ -199,7 +201,8 @@ public class Series {
                     score += 4;
                     flag = true;
                 }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()) {
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
                     score += 2;
                 }
                 break;
@@ -209,7 +212,8 @@ public class Series {
                     score += 4;
                     flag = true;
                 }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()) {
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
                     score += 3;
                 }
 

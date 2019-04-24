@@ -75,6 +75,7 @@ public class Main {
                                         if (picture != null) {
                                             firstRound.add(picture);
                                         }
+                                        count++;
                                         if (count % 100000 == 0) {
                                             if (lastSize != firstRound.size()) {
                                                 System.out.printf("%s%s%.2f%s\n", formatter.format(firstRound.size()), " possible options (", (count / Math.pow(8, 8) * 100), "%).");
@@ -82,7 +83,6 @@ public class Main {
                                                 //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                                             }
                                         }
-                                        count++;
                                     }
                                 }
                             }
@@ -115,6 +115,7 @@ public class Main {
                             if (picture != null) {
                                 secondRound.add(picture);
                             }
+                            count++;
                             if (count % 100000 == 0) {
                                 if (lastSize != secondRound.size()) {
                                     System.out.printf("%s%s%.2f%s\n", formatter.format(secondRound.size()), " possible options (", (count / (firstRound.size() * Math.pow(8, 4)) * 100), "%).");
@@ -122,7 +123,6 @@ public class Main {
                                     //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                                 }
                             }
-                            count++;
                         }
                     }
                 }
@@ -150,6 +150,7 @@ public class Main {
                     if (picture != null) {
                         confRound.add(picture);
                     }
+                    count++;
                     if (count % 100000 == 0) {
                         if (lastSize != confRound.size()) {
                             System.out.printf("%s%s%.2f%s\n", formatter.format(confRound.size()), " possible options (", (count / (secondRound.size() * Math.pow(8, 2)) * 100), "%).");
@@ -157,7 +158,6 @@ public class Main {
                             //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                         }
                     }
-                    count++;
                 }
             }
         }//end of conFinals round simulation loops
@@ -182,6 +182,7 @@ public class Main {
                 if (picture != null) {
                     finalsRound.add(picture);
                 }
+                count++;
                 if (count % 100000 == 0) {
                     if (lastSize != finalsRound.size()) {
                         System.out.printf("%s%s%.2f%s\n", formatter.format(finalsRound.size()), " possible options (", (count / (confRound.size() * Math.pow(8, 1)) * 100), "%).");
@@ -189,7 +190,6 @@ public class Main {
                         //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                     }
                 }
-                count++;
             }//end of finals round simulation loops
         }
 
