@@ -22,7 +22,7 @@ public class Main {
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         sleep(3000);
 
-       /* simulationStart = System.currentTimeMillis();
+        simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
         calculateScore(secondRound, players);
         printResult(players);
@@ -32,9 +32,9 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        sleep(3000);*/
+        sleep(3000);
 
-        /*simulationStart = System.currentTimeMillis();
+        simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
         calculateScore(conFinals, players);
         printResult(players);
@@ -44,7 +44,7 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        sleep(3000);*/
+        sleep(3000);
 
         /*simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
@@ -152,7 +152,7 @@ public class Main {
                     }
                     if (count % 100000 == 0) {
                         if (lastSize != confRound.size()) {
-                            System.out.printf("%s%s%.2f%s\n", formatter.format(confRound.size()), " possible options (", (count / (confRound.size() * Math.pow(8, 2)) * 100), "%).");
+                            System.out.printf("%s%s%.2f%s\n", formatter.format(confRound.size()), " possible options (", (count / (secondRound.size() * Math.pow(8, 2)) * 100), "%).");
                             lastSize = confRound.size();
                             //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                         }
@@ -184,7 +184,7 @@ public class Main {
                 }
                 if (count % 100000 == 0) {
                     if (lastSize != finalsRound.size()) {
-                        System.out.printf("%s%s%.2f%s\n", formatter.format(finalsRound.size()), " possible options (", (count / (finalsRound.size() * Math.pow(8, 1)) * 100), "%).");
+                        System.out.printf("%s%s%.2f%s\n", formatter.format(finalsRound.size()), " possible options (", (count / (confRound.size() * Math.pow(8, 1)) * 100), "%).");
                         lastSize = finalsRound.size();
                         //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
                     }
@@ -218,12 +218,12 @@ public class Main {
         picture.setPicture(conf);
 
         //conFinals
-        flag = picture.getConfFinals()[3].setSeries(i13);
+        flag = picture.getConfFinals()[0].setSeries(i13);
         if (!flag) {
             return null;
         }
         //conFinals
-        flag = picture.getConfFinals()[3].setSeries(i14);
+        flag = picture.getConfFinals()[1].setSeries(i14);
         if (!flag) {
             return null;
         }
