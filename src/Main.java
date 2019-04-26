@@ -46,7 +46,7 @@ public class Main {
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         sleep(3000);
 
-        /*simulationStart = System.currentTimeMillis();
+        simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
         calculateScore(finals, players);
         printResult(players);
@@ -56,7 +56,7 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        sleep(3000);*/
+        sleep(3000);
     }
 
     private static ArrayList<PlayoffPicture> startFirstRoundSimulation() {
