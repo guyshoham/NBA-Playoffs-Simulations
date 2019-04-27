@@ -44,7 +44,7 @@ public class PlayoffPicture {
         round1[3].setSeries(4, 1);
 
         //GS - LAC
-        round1[4].setSeries(3, 2);
+        round1[4].setSeries(4, 2);
         //HOU - UTA
         round1[5].setSeries(4, 1);
         //POR - OKC
