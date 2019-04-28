@@ -13,7 +13,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> firstRound = startFirstRoundSimulation();
         calculateScore(firstRound, players);
-        printResult(players);
+        printResult(firstRound,players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -25,7 +25,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
         calculateScore(secondRound, players);
-        printResult(players);
+        printResult(secondRound,players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -37,7 +37,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
         calculateScore(conFinals, players);
-        printResult(players);
+        printResult(conFinals,players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -49,7 +49,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
         calculateScore(finals, players);
-        printResult(players);
+        printResult(finals,players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -317,7 +317,7 @@ public class Main {
         }
     }
 
-    private static void printResult(Player[] players) throws Exception {
+    private static void printResult(ArrayList<PlayoffPicture> options, Player[] players) throws Exception {
         int numOfWins = 0;
         List<Player> sortedPlayers = new ArrayList<>();
         for (Player player : players) {
@@ -330,7 +330,7 @@ public class Main {
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         for (Player player : sortedPlayers) {
             System.out.printf("%-15s wins = %-9s%s%.2f%s\n", player, formatter.format(player.getWins()),
-                    " - ", player.getWins() / (double) numOfWins * 100, "%");
+                    " - ", player.getWins() / (double) options.size() * 100, "%");
             sleep(500);
         }
     }
