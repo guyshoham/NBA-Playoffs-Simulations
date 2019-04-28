@@ -10,6 +10,10 @@ public class Main {
         int min, sec;
         Player[] players = initPlayers();
 
+        PlayoffPicture picture = new PlayoffPicture(false);
+        System.out.println("Date: 28/4/19");
+        System.out.println(picture);
+
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> firstRound = startFirstRoundSimulation();
         calculateScore(firstRound, players);

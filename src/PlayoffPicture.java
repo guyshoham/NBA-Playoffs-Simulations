@@ -55,9 +55,13 @@ public class PlayoffPicture {
         qualifyTeams();
 
         //round2
+        //MIL - BOS
         //round2[0].setSeries(0, 0);
+        //PHI - TOR
         round2[1].setSeries(0, 1);
+        //GS - HOU
         //round2[2].setSeries(0, 0);
+        //POR - DEN
         //round2[3].setSeries(0, 0);
 
         //qualifyTeams();
