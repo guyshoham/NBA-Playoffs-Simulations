@@ -361,7 +361,7 @@ public class Main {
                     max = player.getScore();
                     winners.add(player);
                 }
-                if (player.getScore() == max) {
+                else if (player.getScore() == max) {
                     winners.add(player);
                 }
             }

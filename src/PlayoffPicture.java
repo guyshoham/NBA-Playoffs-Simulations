@@ -50,13 +50,13 @@ public class PlayoffPicture {
         //POR - OKC
         round1[6].setSeries(4, 1);
         //DEN - SA
-        round1[7].setSeries(3, 3);
+        round1[7].setSeries(4, 3);
 
-        //qualifyTeams();
+        qualifyTeams();
 
         //round2
         //round2[0].setSeries(0, 0);
-        //round2[1].setSeries(0, 0);
+        round2[1].setSeries(0, 1);
         //round2[2].setSeries(0, 0);
         //round2[3].setSeries(0, 0);
 
