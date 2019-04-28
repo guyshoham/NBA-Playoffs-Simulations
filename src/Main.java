@@ -24,6 +24,7 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
+        resetWins(players);
         sleep(3000);
 
         simulationStart = System.currentTimeMillis();
@@ -36,6 +37,7 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
+        resetWins(players);
         sleep(3000);
 
         simulationStart = System.currentTimeMillis();
@@ -48,6 +50,7 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
+        resetWins(players);
         sleep(3000);
 
         simulationStart = System.currentTimeMillis();
@@ -60,7 +63,14 @@ public class Main {
         min = (int) (simulationTotal / 1000 / 60);
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
+        resetWins(players);
         sleep(3000);
+    }
+
+    private static void resetWins(Player[] players) {
+        for (Player player : players) {
+            player.resetWins();
+        }
     }
 
     private static ArrayList<PlayoffPicture> startFirstRoundSimulation() {

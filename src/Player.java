@@ -33,8 +33,16 @@ public class Player implements Comparable<Player> {
         this.score += score;
     }
 
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
     public void resetScore() {
         setScore(0);
+    }
+
+    public void resetWins() {
+        setWins(0);
     }
 
     public int getWins() {
