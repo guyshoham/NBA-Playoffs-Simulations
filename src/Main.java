@@ -17,7 +17,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> firstRound = startFirstRoundSimulation();
         calculateScore(firstRound, players);
-        printResult(firstRound,players);
+        printResult(firstRound, players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -30,7 +30,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
         calculateScore(secondRound, players);
-        printResult(secondRound,players);
+        printResult(secondRound, players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -43,7 +43,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
         calculateScore(conFinals, players);
-        printResult(conFinals,players);
+        printResult(conFinals, players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -56,7 +56,7 @@ public class Main {
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
         calculateScore(finals, players);
-        printResult(finals,players);
+        printResult(finals, players);
 
         simulationEnd = System.currentTimeMillis();
         simulationTotal = simulationEnd - simulationStart;
@@ -347,6 +347,7 @@ public class Main {
                     " - ", player.getWins() / (double) options.size() * 100, "%");
             sleep(500);
         }
+        System.out.printf("Total = %.2f%s\n", numOfWins / (double) options.size() * 100, "%");
     }
 
     private static void calculate(PlayoffPicture picture, Player[] players) {
@@ -374,8 +375,7 @@ public class Main {
                     winners.clear();
                     max = player.getScore();
                     winners.add(player);
-                }
-                else if (player.getScore() == max) {
+                } else if (player.getScore() == max) {
                     winners.add(player);
                 }
             }
