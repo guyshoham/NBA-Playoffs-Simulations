@@ -11,7 +11,7 @@ public class Main {
         Player[] players = initPlayers();
 
         PlayoffPicture picture = new PlayoffPicture(false);
-        System.out.println("Date: 28/4/19");
+        System.out.println("Date: 29/4/19");
         System.out.println(picture);
 
         simulationStart = System.currentTimeMillis();
