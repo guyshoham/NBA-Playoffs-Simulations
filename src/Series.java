@@ -175,7 +175,8 @@ public class Series {
         switch (round) {
             case 1:
                 //round1
-                if (bet.getTeam1Wins() + picture.getTeam1Wins() == 8 || bet.getTeam2Wins() + picture.getTeam2Wins() == 8) {
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
                     score += 2;
                     flag = true;
                 }
@@ -186,7 +187,8 @@ public class Series {
                 break;
             case 2:
                 //round2
-                if (bet.getTeam1Wins() + picture.getTeam1Wins() == 8 || bet.getTeam2Wins() + picture.getTeam2Wins() == 8) {
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
                     score += 3;
                     flag = true;
                 }
@@ -197,7 +199,8 @@ public class Series {
                 break;
             case 3:
                 //confFinals
-                if (bet.getTeam1Wins() + picture.getTeam1Wins() == 8 || bet.getTeam2Wins() + picture.getTeam2Wins() == 8) {
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
                     score += 4;
                     flag = true;
                 }
@@ -208,7 +211,8 @@ public class Series {
                 break;
             case 4:
                 //finals
-                if (bet.getTeam1Wins() + picture.getTeam1Wins() == 8 || bet.getTeam2Wins() + picture.getTeam2Wins() == 8) {
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
                     score += 4;
                     flag = true;
                 }
@@ -218,7 +222,7 @@ public class Series {
                 }
 
                 if (flag) {
-                    if (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().toString().equals("GS")) {
+                    if (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().toString().equals(Constants.GS.toString())) {
                         score += 3;
                     } else {
                         score += 7;
