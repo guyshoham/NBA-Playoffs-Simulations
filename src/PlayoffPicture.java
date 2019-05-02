@@ -62,7 +62,7 @@ public class PlayoffPicture {
         //GS - HOU
         round2[2].setSeries(2, 0);
         //POR - DEN
-        round2[3].setSeries(0, 1);
+        round2[3].setSeries(1, 1);
 
         //qualifyTeams();
 
