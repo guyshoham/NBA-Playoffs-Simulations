@@ -99,12 +99,25 @@ public class PlayoffPicture {
 
     @Override
     public String toString() {
-        return "PlayoffPicture{" +
-                "\nround1=" + Arrays.toString(round1) +
-                "\nround2=" + Arrays.toString(round2) +
-                "\nconfFinals=" + Arrays.toString(confFinals) +
-                "\nfinals=" + finals +
-                '}';
+        String retVal = "";
+        retVal += "PlayoffPicture{" +
+                "\nround1=" + Arrays.toString(round1);
+        if (round2[0].getTeam1().toString() != null || round2[0].getTeam2().toString() != null ||
+                round2[1].getTeam1().toString() != null || round2[1].getTeam2().toString() != null||
+                round2[2].getTeam1().toString() != null || round2[2].getTeam2().toString() != null||
+                round2[3].getTeam1().toString() != null || round2[3].getTeam2().toString() != null) {
+            retVal += "\nround2=" + Arrays.toString(round2);
+        }
+        if (confFinals[0].getTeam1().toString() != null || confFinals[0].getTeam2().toString() != null ||
+                confFinals[1].getTeam1().toString() != null || confFinals[1].getTeam2().toString() != null) {
+            retVal += "\nconfFinals=" + Arrays.toString(confFinals);
+        }
+        if (finals.getTeam1().toString() != null && finals.getTeam2().toString() != null) {
+            retVal += "\nfinals=" + finals;
+        }
+        retVal += '}';
+
+        return retVal;
     }
 
     public void setPicture(PlayoffPicture sec) {

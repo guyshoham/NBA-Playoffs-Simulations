@@ -142,7 +142,6 @@ public class Series {
         return true;
     }
 
-
     public Team getTeam1() {
         return team1;
     }

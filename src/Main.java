@@ -367,7 +367,6 @@ public class Main {
 
         //check player with highest score
         if (!allZero(players)) {
-
             ArrayList<Player> winners = new ArrayList<>();
             int max = 0;
             for (Player player : players) {
