@@ -56,11 +56,11 @@ public class PlayoffPicture {
 
         //round2
         //MIL - BOS
-        round2[0].setSeries(2, 1);
+        round2[0].setSeries(3, 1);
         //PHI - TOR
         round2[1].setSeries(2, 2);
         //GS - HOU
-        round2[2].setSeries(2, 1);
+        round2[2].setSeries(2, 2);
         //POR - DEN
         round2[3].setSeries(2, 2);
 
