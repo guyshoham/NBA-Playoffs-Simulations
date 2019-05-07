@@ -94,7 +94,7 @@ public class Player implements Comparable<Player> {
         orenBet.getRound2()[3].setSeries(Constants.OKC, Constants.SA, 4, 2);
 
         orenBet.getConfFinals()[0].setSeries(Constants.MIL, Constants.TOR, 3, 4);
-        orenBet.getConfFinals()[1].setSeries(Constants.GS, Constants.POR, 4, 1);
+        orenBet.getConfFinals()[1].setSeries(Constants.GS, Constants.OKC, 4, 1);
 
         orenBet.getFinals().setSeries(Constants.TOR, Constants.GS, 2, 4);
         oren.setBet(orenBet);
