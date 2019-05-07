@@ -22,11 +22,11 @@ public class Series {
         this.team2 = team2Wins;
     }
 
-    public void setSeries(Series series) {
-        this.team1 = series.getTeam1();
-        this.team2 = series.getTeam2();
-        this.team1Wins = series.getTeam1Wins();
-        this.team2Wins = series.getTeam2Wins();
+    public void setSeries(Team team1, Team team2, int team1Wins, int team2Wins) {
+        this.team1 = team1;
+        this.team2 = team2;
+        this.team1Wins = team1Wins;
+        this.team2Wins = team2Wins;
     }
 
     public void setSeries(int team1Wins, int team2Wins) {
@@ -34,11 +34,12 @@ public class Series {
         this.team2Wins = team2Wins;
     }
 
-    public void setSeries(Team team1, Team team2, int team1Wins, int team2Wins) {
-        this.team1 = team1;
-        this.team2 = team2;
-        this.team1Wins = team1Wins;
-        this.team2Wins = team2Wins;
+    public void setSeries(Series series, int team1Wins, int team2Wins) {
+        this.setSeries(series.getTeam1(), series.getTeam2(), team1Wins, team2Wins);
+    }
+
+    public void setSeries(Series series) {
+        this.setSeries(series.getTeam1(), series.getTeam2(), series.getTeam1Wins(), series.getTeam2Wins());
     }
 
     public boolean setSeries(int magicNum) {

@@ -26,4 +26,9 @@ public class Constants {
     static final Series W36 = new Series(POR, OKC);
     static final Series W27 = new Series(DEN, SA);
 
+    static final Series ESM1 = new Series(MIL, BOS);
+    static final Series ESM2 = new Series(PHI, TOR);
+    static final Series WSM1 = new Series(GS, HOU);
+    static final Series WSM2 = new Series(POR, DEN);
+
 }

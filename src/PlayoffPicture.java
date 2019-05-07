@@ -31,50 +31,42 @@ public class PlayoffPicture {
     }
 
     private void editPlayoff() {
-        //just temporary editing
+        //edit to up-to-date playoff bracket
 
         //round1
         //MIL - DET
-        round1[0].setSeries(4, 0);
+        round1[0].setSeries(Constants.E18, 4, 0);
         //BOS - IND
-        round1[1].setSeries(4, 0);
+        round1[1].setSeries(Constants.E45, 4, 0);
         //PHI - BKN
-        round1[2].setSeries(4, 1);
+        round1[2].setSeries(Constants.E36, 4, 1);
         //TOR - ORL
-        round1[3].setSeries(4, 1);
-
+        round1[3].setSeries(Constants.E27, 4, 1);
         //GS - LAC
-        round1[4].setSeries(4, 2);
+        round1[4].setSeries(Constants.W18, 4, 2);
         //HOU - UTA
-        round1[5].setSeries(4, 1);
+        round1[5].setSeries(Constants.W45, 4, 1);
         //POR - OKC
-        round1[6].setSeries(4, 1);
+        round1[6].setSeries(Constants.W36, 4, 1);
         //DEN - SA
-        round1[7].setSeries(4, 3);
-
-        qualifyTeams();
+        round1[7].setSeries(Constants.W27, 4, 3);
 
         //round2
         //MIL - BOS
-        round2[0].setSeries(3, 1);
+        round2[0].setSeries(Constants.ESM1, 3, 1);
         //PHI - TOR
-        round2[1].setSeries(2, 2);
+        round2[1].setSeries(Constants.ESM2, 2, 2);
         //GS - HOU
-        round2[2].setSeries(2, 2);
+        round2[2].setSeries(Constants.WSM1, 2, 2);
         //POR - DEN
-        round2[3].setSeries(2, 2);
-
-        //qualifyTeams();
+        round2[3].setSeries(Constants.WSM2, 2, 2);
 
         //confFinals
         //confFinals[0].setSeries(0, 0);
         //confFinals[1].setSeries(0, 0);
 
-        //qualifyTeams();
-
         //finals
         //finals.setSeries(0, 0);
-
     }
 
     public Series[] getRound1() {

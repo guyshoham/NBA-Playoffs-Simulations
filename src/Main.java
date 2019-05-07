@@ -25,7 +25,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        sleep(3000);
+        //sleep(3000);
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
@@ -38,7 +38,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        sleep(3000);
+        //sleep(3000);
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
@@ -51,7 +51,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        sleep(3000);
+        //sleep(3000);
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
@@ -64,7 +64,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        sleep(3000);
+        //sleep(3000);
     }
 
     private static void resetWins(Player[] players) {
@@ -345,7 +345,7 @@ public class Main {
         for (Player player : sortedPlayers) {
             System.out.printf("%-15s wins = %-9s%s%.2f%s\n", player, formatter.format(player.getWins()),
                     " - ", player.getWins() / (double) options.size() * 100, "%");
-            sleep(500);
+            //sleep(500);
         }
         System.out.printf("Total = %.2f%s\n", numOfWins / (double) options.size() * 100, "%");
     }
