@@ -55,11 +55,11 @@ public class PlayoffPicture {
         //MIL - BOS
         round2[0].setSeries(Constants.ESM1, 3, 1);
         //PHI - TOR
-        round2[1].setSeries(Constants.ESM2, 2, 2);
+        round2[1].setSeries(Constants.ESM2, 2, 3);
         //GS - HOU
         round2[2].setSeries(Constants.WSM1, 2, 2);
         //POR - DEN
-        round2[3].setSeries(Constants.WSM2, 2, 2);
+        round2[3].setSeries(Constants.WSM2, 2, 3);
 
         //confFinals
         //confFinals[0].setSeries(0, 0);

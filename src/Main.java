@@ -5,13 +5,17 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
+
+    static final int DELAY_ROUND = 2000;
+    static final int DELAY_PRINT = 200;
+
     public static void main(String[] args) throws Exception {
         long simulationStart, simulationEnd, simulationTotal;
         int min, sec;
         Player[] players = initPlayers();
 
         PlayoffPicture picture = new PlayoffPicture(false);
-        System.out.println("Date: 7/5/19");
+        System.out.println("Date: 8/5/19");
         System.out.println(picture);
 
         simulationStart = System.currentTimeMillis();
@@ -25,7 +29,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        //sleep(3000);
+        sleep(DELAY_ROUND);
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
@@ -38,7 +42,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        //sleep(3000);
+        sleep(DELAY_ROUND);
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
@@ -51,7 +55,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        //sleep(3000);
+        sleep(DELAY_ROUND);
 
         simulationStart = System.currentTimeMillis();
         ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
@@ -64,7 +68,7 @@ public class Main {
         sec = (int) ((simulationTotal / 1000) % 60);
         System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
-        //sleep(3000);
+        sleep(DELAY_ROUND);
     }
 
     private static void resetWins(Player[] players) {
@@ -345,8 +349,9 @@ public class Main {
         for (Player player : sortedPlayers) {
             System.out.printf("%-15s wins = %-9s%s%.2f%s\n", player, formatter.format(player.getWins()),
                     " - ", player.getWins() / (double) options.size() * 100, "%");
-            //sleep(500);
+            sleep(DELAY_PRINT);
         }
+        sleep(DELAY_PRINT);
         System.out.printf("Total = %.2f%s\n", numOfWins / (double) options.size() * 100, "%");
     }
 
