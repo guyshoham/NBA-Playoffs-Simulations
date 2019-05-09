@@ -8,6 +8,7 @@ public class Main {
 
     static final int DELAY_ROUND = 2000;
     static final int DELAY_PRINT = 200;
+    static final String DATE = "9/5/19";
 
     public static void main(String[] args) throws Exception {
         long simulationStart, simulationEnd, simulationTotal;
@@ -15,7 +16,7 @@ public class Main {
         Player[] players = initPlayers();
 
         PlayoffPicture picture = new PlayoffPicture(false);
-        System.out.println("Date: 8/5/19");
+        System.out.println("Date: " + DATE);
         System.out.println(picture);
 
         simulationStart = System.currentTimeMillis();
