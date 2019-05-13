@@ -55,15 +55,17 @@ public class PlayoffPicture {
         //MIL - BOS
         round2[0].setSeries(Constants.ESM1, 4, 1);
         //PHI - TOR
-        round2[1].setSeries(Constants.ESM2, 3, 3);
+        round2[1].setSeries(Constants.ESM2, 3, 4);
         //GS - HOU
         round2[2].setSeries(Constants.WSM1, 4, 2);
         //POR - DEN
-        round2[3].setSeries(Constants.WSM2, 3, 3);
+        round2[3].setSeries(Constants.WSM2, 4, 3);
 
         //confFinals
-        //confFinals[0].setSeries(0, 0);
-        //confFinals[1].setSeries(0, 0);
+        //MIL - TOR
+        confFinals[0].setSeries(Constants.ECF, 0, 0);
+        //GS - POR
+        confFinals[1].setSeries(Constants.WCF, 0, 0);
 
         //finals
         //finals.setSeries(0, 0);
@@ -103,8 +105,8 @@ public class PlayoffPicture {
         retVal += "PlayoffPicture{" +
                 "\nround1=" + Arrays.toString(round1);
         if (round2[0].getTeam1().toString() != null || round2[0].getTeam2().toString() != null ||
-                round2[1].getTeam1().toString() != null || round2[1].getTeam2().toString() != null||
-                round2[2].getTeam1().toString() != null || round2[2].getTeam2().toString() != null||
+                round2[1].getTeam1().toString() != null || round2[1].getTeam2().toString() != null ||
+                round2[2].getTeam1().toString() != null || round2[2].getTeam2().toString() != null ||
                 round2[3].getTeam1().toString() != null || round2[3].getTeam2().toString() != null) {
             retVal += "\nround2=" + Arrays.toString(round2);
         }

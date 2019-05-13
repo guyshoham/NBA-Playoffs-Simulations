@@ -31,4 +31,7 @@ public class Constants {
     static final Series WSM1 = new Series(GS, HOU);
     static final Series WSM2 = new Series(POR, DEN);
 
+    static final Series ECF = new Series(MIL, TOR);
+    static final Series WCF = new Series(GS, POR);
+
 }
