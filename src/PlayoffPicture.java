@@ -63,7 +63,7 @@ public class PlayoffPicture {
 
         //confFinals
         //MIL - TOR
-        confFinals[0].setSeries(Constants.ECF, 2, 0);
+        confFinals[0].setSeries(Constants.ECF, 2, 1);
         //GS - POR
         confFinals[1].setSeries(Constants.WCF, 3, 0);
 
