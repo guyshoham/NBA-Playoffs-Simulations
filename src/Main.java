@@ -8,7 +8,7 @@ public class Main {
 
     static final int DELAY_ROUND = 2000;
     static final int DELAY_PRINT = 200;
-    static final String DATE = "22/5/19";
+    static final String DATE = "24/5/19";
 
     public static void main(String[] args) throws Exception {
         long simulationStart, simulationEnd, simulationTotal;
