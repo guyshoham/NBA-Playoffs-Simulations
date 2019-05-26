@@ -34,4 +34,6 @@ public class Constants {
     static final Series ECF = new Series(MIL, TOR);
     static final Series WCF = new Series(GS, POR);
 
+    static final Series FINALS = new Series(TOR, GS);
+
 }

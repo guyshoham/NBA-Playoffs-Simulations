@@ -63,12 +63,12 @@ public class PlayoffPicture {
 
         //confFinals
         //MIL - TOR
-        confFinals[0].setSeries(Constants.ECF, 2, 3);
+        confFinals[0].setSeries(Constants.ECF, 2, 4);
         //GS - POR
         confFinals[1].setSeries(Constants.WCF, 4, 0);
 
         //finals
-        //finals.setSeries(0, 0);
+        finals.setSeries(Constants.FINALS, 0, 0);
     }
 
     public Series[] getRound1() {
