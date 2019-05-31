@@ -67,8 +67,8 @@ public class PlayoffPicture {
         //GS - POR
         confFinals[1].setSeries(Constants.WCF, 4, 0);
 
-        //finals
-        finals.setSeries(Constants.FINALS, 0, 0);
+        //TOR - GS
+        finals.setSeries(Constants.FINALS, 1, 0);
     }
 
     public Series[] getRound1() {
