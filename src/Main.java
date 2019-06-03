@@ -6,9 +6,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    static final int DELAY_ROUND = 2000;
-    static final int DELAY_PRINT = 200;
-    static final String DATE = "31/5/19";
+    static final int DELAY_ROUND = 1000;
+    static final int DELAY_PRINT = 100;
+    static final String DATE = "3/6/19";
 
     public static void main(String[] args) throws Exception {
         long simulationStart, simulationEnd, simulationTotal;
