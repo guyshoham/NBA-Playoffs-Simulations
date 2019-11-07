@@ -6,70 +6,54 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
+    static final String PATTERN_FORMAT = "#,###,###";
+    static DecimalFormat formatter = new DecimalFormat(PATTERN_FORMAT);
     static final int DELAY_ROUND = 1000;
     static final int DELAY_PRINT = 100;
+    static final int FIRST_ROUND_OPTIONS = 16777216;
+    static final int SECOND_ROUND_OPTIONS = 65536;
+    static final int CONF_OPTIONS = 64;
     static final String DATE = "11/6/19";
 
     public static void main(String[] args) throws Exception {
-        long simulationStart, simulationEnd, simulationTotal;
-        int min, sec;
         Player[] players = initPlayers();
 
         PlayoffPicture picture = new PlayoffPicture(false);
         System.out.println("Date: " + DATE);
         System.out.println(picture);
 
-        simulationStart = System.currentTimeMillis();
-        ArrayList<PlayoffPicture> firstRound = startFirstRoundSimulation();
-        calculateScore(firstRound, players);
-        printResult(firstRound, players);
+        ArrayList<PlayoffPicture> firstRound = round1(players);
+        ArrayList<PlayoffPicture> secondRound = round2(players, firstRound);
+        ArrayList<PlayoffPicture> conFinals = round3(players, secondRound);
+        round4(players, conFinals);
+    }
 
-        simulationEnd = System.currentTimeMillis();
-        simulationTotal = simulationEnd - simulationStart;
-        min = (int) (simulationTotal / 1000 / 60);
-        sec = (int) ((simulationTotal / 1000) % 60);
-        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        resetWins(players);
-        sleep(DELAY_ROUND);
+    public static ArrayList<PlayoffPicture> round1(Player[] players) throws Exception {
+        ArrayList<PlayoffPicture> firstRound = firstRoundSimulation();
+        return analyzeSimulationResult(players, firstRound);
+    }
 
-        simulationStart = System.currentTimeMillis();
-        ArrayList<PlayoffPicture> secondRound = startSecondRoundSimulation(firstRound);
-        calculateScore(secondRound, players);
-        printResult(secondRound, players);
+    public static ArrayList<PlayoffPicture> round2(Player[] players, ArrayList<PlayoffPicture> firstRound) throws Exception {
+        ArrayList<PlayoffPicture> secondRound = secondRoundSimulation(firstRound);
+        return analyzeSimulationResult(players, secondRound);
+    }
 
-        simulationEnd = System.currentTimeMillis();
-        simulationTotal = simulationEnd - simulationStart;
-        min = (int) (simulationTotal / 1000 / 60);
-        sec = (int) ((simulationTotal / 1000) % 60);
-        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        resetWins(players);
-        sleep(DELAY_ROUND);
+    public static ArrayList<PlayoffPicture> round3(Player[] players, ArrayList<PlayoffPicture> secondRound) throws Exception {
+        ArrayList<PlayoffPicture> conFinals = confSimulation(secondRound);
+        return analyzeSimulationResult(players, conFinals);
+    }
 
-        simulationStart = System.currentTimeMillis();
-        ArrayList<PlayoffPicture> conFinals = startConfSimulation(secondRound);
-        calculateScore(conFinals, players);
-        printResult(conFinals, players);
+    public static ArrayList<PlayoffPicture> round4(Player[] players, ArrayList<PlayoffPicture> conFinals) throws Exception {
+        ArrayList<PlayoffPicture> finals = finalsSimulation(conFinals);
+        return analyzeSimulationResult(players, finals);
+    }
 
-        simulationEnd = System.currentTimeMillis();
-        simulationTotal = simulationEnd - simulationStart;
-        min = (int) (simulationTotal / 1000 / 60);
-        sec = (int) ((simulationTotal / 1000) % 60);
-        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
-        resetWins(players);
-        sleep(DELAY_ROUND);
-
-        simulationStart = System.currentTimeMillis();
-        ArrayList<PlayoffPicture> finals = startFinalsSimulation(conFinals);
+    private static ArrayList<PlayoffPicture> analyzeSimulationResult(Player[] players, ArrayList<PlayoffPicture> finals) throws Exception {
         calculateScore(finals, players);
         printResult(finals, players);
-
-        simulationEnd = System.currentTimeMillis();
-        simulationTotal = simulationEnd - simulationStart;
-        min = (int) (simulationTotal / 1000 / 60);
-        sec = (int) ((simulationTotal / 1000) % 60);
-        System.out.println("\nsimulation time: " + min + "m " + sec + "s");
         resetWins(players);
         sleep(DELAY_ROUND);
+        return finals;
     }
 
     private static void resetWins(Player[] players) {
@@ -78,10 +62,9 @@ public class Main {
         }
     }
 
-    private static ArrayList<PlayoffPicture> startFirstRoundSimulation() {
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
+    private static ArrayList<PlayoffPicture> firstRoundSimulation() {
         ArrayList<PlayoffPicture> firstRound = new ArrayList<>();
-        long count = 0, lastSize = 0;
+        long count = FIRST_ROUND_OPTIONS;
         for (int i1 = 1; i1 <= 8; i1++) {
             for (int i2 = 1; i2 <= 8; i2++) {
                 for (int i3 = 1; i3 <= 8; i3++) {
@@ -94,14 +77,10 @@ public class Main {
                                         if (picture != null) {
                                             firstRound.add(picture);
                                         }
-                                        count++;
-                                        if (count % 100000 == 0) {
-                                            if (lastSize != firstRound.size()) {
-                                                System.out.printf("%s%s%.2f%s\n", formatter.format(firstRound.size()), " possible options (", (count / Math.pow(8, 8) * 100), "%).");
-                                                lastSize = firstRound.size();
-                                                //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
-                                            }
+                                        if (count % (FIRST_ROUND_OPTIONS / 10) == 0) {
+                                            System.out.println(formatter.format(count) + " options left to scan");
                                         }
+                                        count--;
                                     }
                                 }
                             }
@@ -116,10 +95,9 @@ public class Main {
         return firstRound;
     }
 
-    private static ArrayList<PlayoffPicture> startSecondRoundSimulation(ArrayList<PlayoffPicture> firstRound) {
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
+    private static ArrayList<PlayoffPicture> secondRoundSimulation(ArrayList<PlayoffPicture> firstRound) {
         ArrayList<PlayoffPicture> secondRound = new ArrayList<>();
-        long count = 0, lastSize = 0;
+        long count = SECOND_ROUND_OPTIONS;
 
         for (PlayoffPicture sec : firstRound) {
             sec.qualifyTeams();
@@ -134,14 +112,10 @@ public class Main {
                             if (picture != null) {
                                 secondRound.add(picture);
                             }
-                            count++;
-                            if (count % 100000 == 0) {
-                                if (lastSize != secondRound.size()) {
-                                    System.out.printf("%s%s%.2f%s\n", formatter.format(secondRound.size()), " possible options (", (count / (firstRound.size() * Math.pow(8, 4)) * 100), "%).");
-                                    lastSize = secondRound.size();
-                                    //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
-                                }
+                            if (count % (SECOND_ROUND_OPTIONS / 10) == 0) {
+                                System.out.println(formatter.format(count) + " options left to scan");
                             }
+                            count--;
                         }
                     }
                 }
@@ -153,10 +127,9 @@ public class Main {
         return secondRound;
     }
 
-    private static ArrayList<PlayoffPicture> startConfSimulation(ArrayList<PlayoffPicture> secondRound) {
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
+    private static ArrayList<PlayoffPicture> confSimulation(ArrayList<PlayoffPicture> secondRound) {
         ArrayList<PlayoffPicture> confRound = new ArrayList<>();
-        long count = 0, lastSize = 0;
+        long count = CONF_OPTIONS;
 
         for (PlayoffPicture sec : secondRound) {
             sec.qualifyTeams();
@@ -169,14 +142,10 @@ public class Main {
                     if (picture != null) {
                         confRound.add(picture);
                     }
-                    count++;
-                    if (count % 100000 == 0) {
-                        if (lastSize != confRound.size()) {
-                            System.out.printf("%s%s%.2f%s\n", formatter.format(confRound.size()), " possible options (", (count / (secondRound.size() * Math.pow(8, 2)) * 100), "%).");
-                            lastSize = confRound.size();
-                            //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
-                        }
+                    if (count % (CONF_OPTIONS / 10) == 0) {
+                        System.out.println(formatter.format(count) + " options left to scan");
                     }
+                    count--;
                 }
             }
         }//end of conFinals round simulation loops
@@ -186,10 +155,8 @@ public class Main {
         return confRound;
     }
 
-    private static ArrayList<PlayoffPicture> startFinalsSimulation(ArrayList<PlayoffPicture> confRound) {
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
+    private static ArrayList<PlayoffPicture> finalsSimulation(ArrayList<PlayoffPicture> confRound) {
         ArrayList<PlayoffPicture> finalsRound = new ArrayList<>();
-        long count = 0, lastSize = 0;
 
         for (PlayoffPicture sec : confRound) {
             sec.qualifyTeams();
@@ -200,14 +167,6 @@ public class Main {
                 PlayoffPicture picture = getNewOption(finals, i15);
                 if (picture != null) {
                     finalsRound.add(picture);
-                }
-                count++;
-                if (count % 100000 == 0) {
-                    if (lastSize != finalsRound.size()) {
-                        System.out.printf("%s%s%.2f%s\n", formatter.format(finalsRound.size()), " possible options (", (count / (confRound.size() * Math.pow(8, 1)) * 100), "%).");
-                        lastSize = finalsRound.size();
-                        //System.out.println("Free Memory Left: " + Runtime.getRuntime().freeMemory());
-                    }
                 }
             }//end of finals round simulation loops
         }
@@ -346,9 +305,8 @@ public class Main {
 
         Collections.sort(sortedPlayers);
 
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
         for (Player player : sortedPlayers) {
-            System.out.printf("%-15s wins = %-9s%s%.2f%s\n", player, formatter.format(player.getWins()),
+            System.out.printf("%-15s wins = %-9s%s%.2f%s%n", player, formatter.format(player.getWins()),
                     " - ", player.getWins() / (double) options.size() * 100, "%");
             sleep(DELAY_PRINT);
         }

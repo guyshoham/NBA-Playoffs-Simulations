@@ -17,6 +17,73 @@ public class Series {
         this(series.getTeam1(), series.getTeam2());
     }
 
+    public static int compareSeries(Series picture, Series bet, int round) {
+        int score = 0;
+        boolean flag = false;
+
+        switch (round) {
+            case 1:
+                //round1
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
+                    score += 2;
+                    flag = true;
+                }
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
+                    score += 2;
+                }
+                break;
+            case 2:
+                //round2
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
+                    score += 3;
+                    flag = true;
+                }
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
+                    score += 2;
+                }
+                break;
+            case 3:
+                //confFinals
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
+                    score += 4;
+                    flag = true;
+                }
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
+                    score += 2;
+                }
+                break;
+            case 4:
+                //finals
+                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
+                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
+                    score += 4;
+                    flag = true;
+                }
+                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
+                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
+                    score += 3;
+                }
+
+                if (flag) {
+                    if (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().toString().equals(Constants.GS.toString())) {
+                        score += 3;
+                    } else {
+                        score += 7;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        return score;
+    }
+
     public void setSeriesTeams(Team team1Wins, Team team2Wins) {
         this.team1 = team1Wins;
         this.team2 = team2Wins;
@@ -25,11 +92,6 @@ public class Series {
     public void setSeries(Team team1, Team team2, int team1Wins, int team2Wins) {
         this.team1 = team1;
         this.team2 = team2;
-        this.team1Wins = team1Wins;
-        this.team2Wins = team2Wins;
-    }
-
-    public void setSeries(int team1Wins, int team2Wins) {
         this.team1Wins = team1Wins;
         this.team2Wins = team2Wins;
     }
@@ -138,8 +200,9 @@ public class Series {
                         return false;
                     }
                 }
+            default:
+                return true;
         }
-        return true;
     }
 
     public Team getTeam1() {
@@ -166,71 +229,6 @@ public class Series {
         } else {
             return null;
         }
-    }
-
-    public static int compareSeries(Series picture, Series bet, int round) {
-        int score = 0;
-        boolean flag = false;
-
-        switch (round) {
-            case 1:
-                //round1
-                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
-                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
-                    score += 2;
-                    flag = true;
-                }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
-                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
-                    score += 2;
-                }
-                break;
-            case 2:
-                //round2
-                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
-                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
-                    score += 3;
-                    flag = true;
-                }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
-                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
-                    score += 2;
-                }
-                break;
-            case 3:
-                //confFinals
-                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
-                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
-                    score += 4;
-                    flag = true;
-                }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
-                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
-                    score += 2;
-                }
-                break;
-            case 4:
-                //finals
-                if ((bet.getTeam1Wins() + picture.getTeam1Wins() == 8 && bet.getTeam1().equals(picture.getTeam1())) ||
-                        (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().equals(picture.getTeam2()))) {
-                    score += 4;
-                    flag = true;
-                }
-                if (flag && bet.getTeam1Wins() == picture.getTeam1Wins() && bet.getTeam2Wins() == picture.getTeam2Wins()
-                        && bet.getTeam1().equals(picture.getTeam1()) && bet.getTeam2().equals(picture.getTeam2())) {
-                    score += 3;
-                }
-
-                if (flag) {
-                    if (bet.getTeam2Wins() + picture.getTeam2Wins() == 8 && bet.getTeam2().toString().equals(Constants.GS.toString())) {
-                        score += 3;
-                    } else {
-                        score += 7;
-                    }
-                }
-                break;
-        }
-        return score;
     }
 
     @Override

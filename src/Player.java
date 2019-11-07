@@ -9,46 +9,6 @@ public class Player implements Comparable<Player> {
         score = 0;
     }
 
-    public void setBet(PlayoffPicture bet) {
-        this.bet = bet;
-    }
-
-    public PlayoffPicture getBet() {
-        return bet;
-    }
-
-    public void addWin() {
-        wins++;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void addScore(int score) {
-        this.score += score;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    public void resetScore() {
-        setScore(0);
-    }
-
-    public void resetWins() {
-        setWins(0);
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
     public static Player initGuy() {
         Player guy = new Player("Guy Shoham");
         PlayoffPicture guyBet = new PlayoffPicture(true);
@@ -229,6 +189,46 @@ public class Player implements Comparable<Player> {
         tomBet.getFinals().setSeries(Constants.MIL, Constants.GS, 2, 4);
         tom.setBet(tomBet);
         return tom;
+    }
+
+    public PlayoffPicture getBet() {
+        return bet;
+    }
+
+    public void setBet(PlayoffPicture bet) {
+        this.bet = bet;
+    }
+
+    public void addWin() {
+        wins++;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void addScore(int score) {
+        this.score += score;
+    }
+
+    public void resetScore() {
+        setScore(0);
+    }
+
+    public void resetWins() {
+        setWins(0);
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
     }
 
     @Override
