@@ -1,3 +1,5 @@
+package playoffs;
+
 public class Team {
     private String name;
 

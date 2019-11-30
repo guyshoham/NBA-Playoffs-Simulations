@@ -1,3 +1,5 @@
+package playoffs;
+
 public class Constants {
 
     //Atlantic

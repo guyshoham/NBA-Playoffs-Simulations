@@ -1,3 +1,5 @@
+package playoffs;
+
 public class Series {
     private Team team1, team2;
     private int team1Wins, team2Wins;

@@ -1,3 +1,5 @@
+package playoffs;
+
 import java.util.Arrays;
 
 public class PlayoffPicture {

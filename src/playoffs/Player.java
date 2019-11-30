@@ -1,3 +1,5 @@
+package playoffs;
+
 public class Player implements Comparable<Player> {
     private String name;
     private PlayoffPicture bet;
